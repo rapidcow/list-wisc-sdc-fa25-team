@@ -1,0 +1,441 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.0 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_INVALID,DKIM_SIGNED,DMARC_PASS,RCVD_IN_DNSWL_LOW,
+	RCVD_IN_MSPIKE_H5,RCVD_IN_MSPIKE_WL,RCVD_IN_VALIDITY_CERTIFIED,
+	RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,URIBL_DBL_BLOCKED_OPENDNS autolearn=ham
+	autolearn_force=no version=4.0.0
+ARC-Seal: i=2; a=rsa-sha256; t=1759626680; cv=pass; d=forwardemail.net;
+ s=default;
+ b=QoReh3QQa06+33lCWUpa+M5VWTzYIPI1YytfD0VZoohZvqs1URbPIRR/f685rqPuqsXYrhji4
+ dDX+jfCUS0kx8QQVeCjzHCKE74tXimbn2t20p3JoyS38om2Qpok37vj4TMcQv7oLiecnh6oL0xq
+ owspxpRnHaPSjd6udtaNK8s=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=MIME-Version: Content-Type: Subject: Cc: To: From:
+ Message-ID: Date; q=dns/txt; s=default; t=1759626680;
+ bh=jl3Z8OoAx9HTejpPoMyQt7nax7SYOYduyP6hTU7rQx8=;
+ b=Mrl3gF/Da6jGAYme5ryDDtA/pRoeC4Ig14E4t+euTw05Av9hJSfncJUbyv07vSibfET+Qb7jg
+ gXqgc1ubkt0h1p8130r28u0potTHq4YGoSjZvKLP8xA/49A381lCYrtTDXF4kvCJlnRHC0i/Yhj
+ NjAS01miAwjrhyH3FNgRmyY=
+ARC-Authentication-Results: i=2; mx1.forwardemail.net;
+ dkim=pass header.i=@wisc.edu header.s=pps1 header.a=rsa-sha256 header.b=ljr8hiA1;
+ dkim=pass header.i=@wisc.edu header.s=selector2 header.a=rsa-sha256 header.b=VAS0xzfk;
+ spf=pass (mx1.forwardemail.net: domain of ethan.meng@wisc.edu designates 205.220.165.71 as permitted sender) smtp.mailfrom=ethan.meng@wisc.edu
+ smtp.helo=mx0a-007b0c01.pphosted.com;
+ arc=pass (i=1 spf=pass dkim=pass dmarc=pass fromdomain=wisc.edu);
+ dmarc=pass (p=QUARANTINE arc=pass) header.from=wisc.edu header.d=wisc.edu;
+ bimi=none
+Received: from mx0a-007b0c01.pphosted.com ([205.220.165.71]
+ mx0a-007b0c01.pphosted.com) by mx1.forwardemail.net (Forward Email) with
+ ESMTPS for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256); Sun, 05 Oct 2025 01:11:18 +0000
+X-Forward-Email-Sender: rfc822; ethan.meng@wisc.edu,
+ mx0a-007b0c01.pphosted.com, 205.220.165.71
+X-Forward-Email-Version: 1.2.14
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Received: from pps.filterd (m0316037.ppops.net [127.0.0.1])
+	by mx0a-007b0c01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 594MvmXY006302
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Sat, 4 Oct 2025 20:11:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; h=cc
+	:content-type:date:from:message-id:mime-version:subject:to; s=
+	pps1; bh=jl3Z8OoAx9HTejpPoMyQt7nax7SYOYduyP6hTU7rQx8=; b=ljr8hiA
+	13BQx7bUnP15VSw1KlJJS+tQ8hCMR4/Edgqnxax8ZIc2rzARBTzZZXyqkwNI3hVr
+	PeA34ABViQhjZHSpW2vHs+uw4HBKs4gZbNYZu8Be6s29wa5idwxRq8SXkKa9LvZQ
+	sr7PpWjbQoCtqUdQTaE/XMfa4nuINdp2H+23bZwPRAQ43FbrC++EWcF/IQpSqKRR
+	YrvdyxaMkhQdSVflm4ARZ/eUh38MXfnviFxfIKody+T+4lPZMdS8bL1oFTMiEhez
+	Zyg1YxBv/fnW565VQYiBVzfEjmVBOLEJ56Y+YKXl9JfZI0bxwTgQSmtCfU7QiP/r
+	qH17wGLoQeUR3fA==
+Received: from cy3pr05cu001.outbound.protection.outlook.com (mail-westcentralusazon11013040.outbound.protection.outlook.com [40.93.201.40])
+	by mx0a-007b0c01.pphosted.com (PPS) with ESMTPS id 49hu0hf3cf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Sat, 04 Oct 2025 20:11:18 -0500 (CDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UpNEP1fmCNUhueBBqLd5R+Ct/fAZcQkmUr4vqOU54o+y6yrlh64xHbbGh77w7Ve3qpIN2oSDfzZfZ5Ux5rlODUlJCVv9DnHhGyHHSaZGmK1k+4mD9baNaZGLswQyMP3f1QHVkt4N4pXEuaKxTp6e4A4G2Y2em+f+XXzvYx2LvfQOAmPDfLJKL1F+kzn8yUZ/M4rRRyHEG1EewpUjDXCcpl/dKFmWdOSX8DlquWUuhq806a/JuaMTa6PDFP115EWoW7is0rIFGVgFwLrXjxKiqy3MvqWMV7xbr4gcRH/7VYPP09fMBqcEb41Bj4uYEidj9Wf6XRK5C5m/e3o3eQx5Kw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jl3Z8OoAx9HTejpPoMyQt7nax7SYOYduyP6hTU7rQx8=;
+ b=CYjy8kz8Di79LG5jGbEohc/ECipxCJTZrH3Cx0IlqCf2XjTIriPPO5560vAOFZJ9MNnG9f8VtcacjVok9nLnHfzApeHq7TBC6JsQ9tBiRq8wKivS3pKO0o5nkxMtumBgAnCyr6WbLQ+hKcK3H/fu+7FhLeMfDNLMOQlXsq+JYgqAQ2Hc1oAuM42IH+Hmx0Ky6ky1Oynf8/2tqEApJZhJVmccinFGiaiJLmUDwq0YuUT3rtKzJyh6p/0rX5xL0SJFktZL5+Rb17RvjBmG4oNvGU+FRJCvaFORR4C/IdN2yhPPEJgimPh1XcynNMzQsun3tpZ43BsB8KgRKqTFU3dMbQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wisc.edu; dmarc=pass action=none header.from=wisc.edu;
+ dkim=pass header.d=wisc.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jl3Z8OoAx9HTejpPoMyQt7nax7SYOYduyP6hTU7rQx8=;
+ b=VAS0xzfkdWitKScReeIn0xcN4Cf/zHw7MzFZF0svlwW6XuYeDawTtcx+0m2QvRkC6uCY0j7+DXkPVabnZAB3pb6pMYwjyNth+y0CyV9XI+CjAjVrUNGbfQnveUJ5ta0eVZ4teC6i55DJnEyKENtm95905Gl6x7s6A+0MQSwxfIrKB3IfYj3Ig6BFE92z1vXLumrhrL7EWV9WBvMmbK4mEGdAj7aFo+yN5ASSV6ufOpWwd7RWed/th4mkISa1UqKdiLqvtUO7RZBr1m3u6UiT36YyLa5RzJ4WkV8Aa13xpmRdZW+xn/xHA2rcLWm/tuonNx6QeOsRPzsgQGFZn/jpCw==
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com (2603:10b6:408:19f::14)
+ by SJ0PR06MB7711.namprd06.prod.outlook.com (2603:10b6:a03:303::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9182.19; Sun, 5 Oct
+ 2025 01:11:12 +0000
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb]) by LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb%7]) with mapi id 15.20.9182.015; Sun, 5 Oct 2025
+ 01:11:11 +0000
+Date: Sat, 04 Oct 2025 20:11:07 -0500
+Message-ID: <1759626667.1796322.df64AEa1052d0@e.rapidcow.org>
+From: Ethan Meng <ethan.meng@wisc.edu>
+To: undisclosed-recipients:;
+Cc: wisc-sdc-fa25-team@list.rapidcow.org
+Subject: [PSA] Hello Team 11 :)
+Content-Type: multipart/alternative;
+ boundary="===============5355757369260339310=="
+X-ClientProxiedBy: CH0PR03CA0409.namprd03.prod.outlook.com
+ (2603:10b6:610:11b::17) To LV3PR06MB9453.namprd06.prod.outlook.com
+ (2603:10b6:408:19f::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR06MB9453:EE_|SJ0PR06MB7711:EE_
+X-MS-Office365-Filtering-Correlation-Id: 598308fb-f298-41a1-7846-08de03ac1274
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam:
+	BCL:0;ARA:13230040|4022899009|376014|366016|1800799024|41320700013|13003099007|8096899003;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?alFpRC9uL0hiVlFXUUVRbGJCeXFSZFE2SDMrb0U5Ukp5ZGp6NHgvNmJSdG5E?=
+ =?utf-8?B?Y0VRVG1UUUxhS0pCMUt5UlFXQm9MTW1kb2lSbWJnOWJpLzF0QlE5MWFYU0RT?=
+ =?utf-8?B?ZDR1U1Zya2d4WVNDL0EyR201cVd4cnhmemoyZ1pzcHdpcDJhTk5GK1pCNnVl?=
+ =?utf-8?B?MVVmVXlkN1B5TmZlR2RjWE1iOFFDallzQmlXVEp0M1ZOUWpBYnJuV3hOVUhI?=
+ =?utf-8?B?YldoU0w2ZjFiVnJsOVlrQjB3OTlCSzhkeUZuaHdNaGZJT0NLOUFNdjRoREJN?=
+ =?utf-8?B?ajBCM2VwMGNndVVVa00rT1hma0lEdWtTajQxMFJ6YWlNQTZLWHVabGoyM0hV?=
+ =?utf-8?B?cTRYeGxjKzNaSVMzQlhCSHZOd1dBLy9kckpKbVU4RVZmSHVyekZxSXpmUWhh?=
+ =?utf-8?B?SWVLWCtjS0dJejZSZENnNzVyUno3M21LTWJIdm1hbjVUWWphOVowQXpVZEZk?=
+ =?utf-8?B?ZURvS1lFWTVaRk5TSnc2Z1JwalNHRG1DdjFuUElMbFJGNm42NTg4clVRTk1i?=
+ =?utf-8?B?Wm1aMkpQcUZhaDdkcGhGRzY0cmhXN3lUQlZTNENpTlJ1bzFBdHc0UW80Q0NO?=
+ =?utf-8?B?bHg4Q0tZektJeG4wV0cyK1VZTHVoWUxVRUlhNXExRFFjSTRvb1UyOEg0MDYx?=
+ =?utf-8?B?NnphdVVFUmZXL3gzZkJwNVVxcVMyUzUxTk12TGpFMjJjVitsSmhhVkY2Wk5V?=
+ =?utf-8?B?aGNMbWlqNEErUnMyOGhPc2JpMjY0eE5LTDVoMzR3Uld4dnlldjc0cW9IeFBt?=
+ =?utf-8?B?SGY2UWhSSm9yUVlvNFcxRnNaNFVRa2pHSC9jbWVnTlY4dEJnZW5DMytSQ3NP?=
+ =?utf-8?B?a2dOWVdiMjV0ZklzVFZOdnBMQnF0MG5FQ2RsQjhrR2hlTWc1YVB6NzRxenpn?=
+ =?utf-8?B?cWpsYnJUQ3huRVdkeXkxMzV4dE1YdVVsdmZYaFUwWVh4cEVWVlpGTWZxWnhB?=
+ =?utf-8?B?Q292ekNjL1gzblQ0OFdtUnVuZXd1YmdTOEV1NW5SQ0loMTZIcHoySXJQWnZ1?=
+ =?utf-8?B?aU1wR0dHdmpKLzJZR2JHdjIzUkRHanp2dE9HbStSTWxYQlpMdVVBcWpRa1Qz?=
+ =?utf-8?B?dno0eE1NYXBLbTRLd3FxWG40TGNoK1pWYllITWZJMnF4dWJ2YTZIQXcxT3dy?=
+ =?utf-8?B?TVNRVG00anhOSXNhSHBqd1UrdTZtSFF2MC95amREWVFMK04zWmFoY3dkK0JY?=
+ =?utf-8?B?Tkg0d212YjZQck5xRWV2a1UzeDh4a3psbWdubW5lOHJ5dy9HQS93ZXMwTzJC?=
+ =?utf-8?B?RXBiUENEL2tuOFNDUnRkd2gzVXdGTlBrd250L1A3bDNGOW1rU2NRUXhrbys2?=
+ =?utf-8?B?a0l4K0JsZ0ZxWjhueDBxYWdrWFlqVFZQeTdjdjZmYWxHeEl0NUVhQ1ptQ2Jo?=
+ =?utf-8?B?NFZOcHNDZVlCUnhkblM3bzNNVW1XVlczRVM4eTFydU1Zcm1ET3RMVTQ1VzZ3?=
+ =?utf-8?B?VkkwUTRXcklnMi9NaXQ0TnhJOXJxUkJab1N6ejByZ2Y0TEJRQVFGRXJWUi9r?=
+ =?utf-8?B?UzcyclFiN0htK0poUS80VG5TdmprTjZ4d2N3RVFyR1ZEUFBwK0ErallMTzNp?=
+ =?utf-8?B?MUlXOWJvc2FjMTZWUXhOZVNLSXpjWEJqQW82aWE5a0ZtOXlmb0lJM1VMYUVN?=
+ =?utf-8?B?UTlORjFnYVNZejA2bDQwYk1kQ29QbXBzbjF6YVhod0Y1TTBsWlRjU3JiMGdi?=
+ =?utf-8?B?eWZGUzRjendCSUM2K0NReFZ5bTdRZnJxWEdaeEVhV2t3NFNtMyt5ZnZQNkhk?=
+ =?utf-8?B?T3BIdFhuV01scytRRWVpMVJMV0dFK3hwUXhVUGNqQWN6ZUJYRnV0Mk5zY0Fr?=
+ =?utf-8?B?WG9lNkRnbTRiZ2I0WHFFM1BRRzR0OERXNktTUkJnQlZBbW1udEZueG93c09B?=
+ =?utf-8?B?cU91M3BHbEpZQTUvdUlPMDJNZ1V6UEpjYkdrdzV0eGtLWnc9PQ==?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR06MB9453.namprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(4022899009)(376014)(366016)(1800799024)(41320700013)(13003099007)(8096899003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?b1VLRlBZTVQvSjdyV2hXYmlmYkhRd0pIWENoclZHVFZjT3RuZVdSa2wyaU9m?=
+ =?utf-8?B?THF5dUVRTDl0OHlGWWZIV2N3YXplb1ZQeGtQcFcrZ1g2QVBQemp5cmFLWFpE?=
+ =?utf-8?B?SWJRS3YwQlF1N1dKcUxheDFyQ042cjFSOXBmd2xsdE1xZVVmUW81OWNGQjhk?=
+ =?utf-8?B?Y1RlOVk4SlNqQUVjY0FpNkt3a2dzYitzNjJxYm4zNmVzYjBsZFZPZTNVYXQ4?=
+ =?utf-8?B?NmhTMWw4bnhRcStPVkxkZ2l1WTRWMm5kMDBId2VZWHRFTXZ4a0tTOWxXMjNq?=
+ =?utf-8?B?Lzg3bzZFUnhiS0hEc2dJWS9RbDRlVGw5akhoZThPY0x3WUZ4ejA4WkZzSUx4?=
+ =?utf-8?B?Z29OcDNwTkdCRGg1TU8yOEs3Uzl1clFiV3hFc2ZuMWN4NlU1dGpybXNjNytM?=
+ =?utf-8?B?YmRhazllUFRTampMeXRuNHQrMEYya2hUVUl5ekRVMWt5d0t0cGRGdnNEcjc1?=
+ =?utf-8?B?RUpFMmpvbDJYNFFDNHZuOHBCSGcxbmpSaW43QmE1UVczTDIrWWpzU1FHTDN0?=
+ =?utf-8?B?clJnelV3REFGZFZuUWFyUVZDWC9XZEMwUm5rb3VYcytzMzA0RDhLMDM5WVdT?=
+ =?utf-8?B?dUVuUTdDN2V3SElvQnloaEVMM2I3SllqdzZVL2NRRk15c1FkVjhyNDhuc0d0?=
+ =?utf-8?B?OTlNZ1E3UUdDKzdLcjRsUzBGNWxnelVISVk5dHlENCt1YTllUTI4VGd6Smh5?=
+ =?utf-8?B?VGZIbWYzL0pZL1Z0eFhxTWprV2s5cHBFRmU2MnFiTlh4bHN1MGpyOHpqd3Bu?=
+ =?utf-8?B?c2g1Q0huVlRQSW9jZmJpeVdmMEFwdE5VYjY4a1EyRTliZDM5RE9wWUhGNlVT?=
+ =?utf-8?B?TE0vZjRMTUZxbWxvdTFoKy9lUXlkSmo5Wm1VUGhJL3hVL3NTTlgxSDdSVCs2?=
+ =?utf-8?B?My9XWkRSZWxkc3R5K3d6ckdBZFhUTjhGRFZLbTNxd1d5U3ZHcGwvdjlQVW8y?=
+ =?utf-8?B?bmlENnNmejZGZTNtYm5wMkh5SHcrZm91TGtUSzBBTVYyRzI4WmxCcFJRRkxO?=
+ =?utf-8?B?MlhINkc3ZU9tQ2thU3B3Z2J4Nm9IYzNuT0ZXR1FUK0R5K04wMlp0cWkwZGJ0?=
+ =?utf-8?B?aW5pYjBHekhlb2tvck9TejgyV2xOWElReU96bzF3N0NnYXM0UlVxOVQzMUY1?=
+ =?utf-8?B?T3lVdTFsL0ZKTmNkTmxRaitFRkxwbmgxaTNPTWVLM2pCc2E1c3hYOEJPTmsy?=
+ =?utf-8?B?NWRiUExEZ2F3VHYyZ1pnamhpZzJ3bkhtWnlFS2JuYytYcTZISVh2cHpERTRu?=
+ =?utf-8?B?ZDhDWUhpd3d5aEdCL01Ib0NsR3pKTlRaVllyeXhhYi9uZ3lGWXN4dXQxekVP?=
+ =?utf-8?B?V2RMaFpvcEsyMmZIRCsyNlhJQmkyUEQ1RVhpUmpYNDBkQWRvekxENFdMSTJX?=
+ =?utf-8?B?Unh3VFFVdnVPUmloTjhvVUFzZGlnY3hybFRjZWNMRHhQNUtQUnlhcDlSRWRT?=
+ =?utf-8?B?UUIvY0NBdG1RcWF2bzNrRzdsNU4zc3ZTa0dSUnFROGxSZGhKbjZjTTFkWWtz?=
+ =?utf-8?B?TEZEQTd5bWt6Y0VjVUlOZC9kSitGRU9QRTBycXlEbVZuSGdsclBkNitCcUhu?=
+ =?utf-8?B?WWRTSkpBdjFhcHRwTFplcFBIU283eDZKMm5FOXdJb1Qzd3BCMzY4NTQxRmFy?=
+ =?utf-8?B?ekwzTENtcjlXbk9LOGFrV2dmNVB3S1JKUE9kTDBYakpzNDdUVXpCVHk5aWU1?=
+ =?utf-8?B?QnFXaWY4bkpyYUNFa1ZkS3RVZklUbkpsUmx4OE9MMUdSaXZZN1dmTTVkZnZG?=
+ =?utf-8?B?UTl2UUlDQVpvTUZaNlJiVjFWdEI0YXhiSWJTUkVTUG15NzF1S0YvdDJMcTBp?=
+ =?utf-8?B?Rit6OWF5M1I1WW1QU2Racnd6WjdTbWl4WXQ5cjZPeXFTRnI5QzlzRmVySTY2?=
+ =?utf-8?B?OXlvKzVHcXFKV21LMzhmSWdiTjdGNFJXVWRNSWxOZlFCUzJWaStIeEdEOG9k?=
+ =?utf-8?B?Q2pMM0lMNjczYlErcEJ4Ui8zajl5QXF1QmtLZnQ5Qis1T1VONzhYQ1ZXVlZQ?=
+ =?utf-8?B?a2Y0RDhjYmk3d2F1UG85eDdOZ2NybjhlT3Y0bHJMbXVoaTFjTUpKTHNOY1FL?=
+ =?utf-8?B?NVpqVXNwMjUrQTJxcjNTYkxWZjBOSDV3aXZYRFUxTVluamtja0dncTFwL3BF?=
+ =?utf-8?Q?kFN1Wi1fYib569IWifI29PmxA?=
+X-OriginatorOrg: wisc.edu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 598308fb-f298-41a1-7846-08de03ac1274
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR06MB9453.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Oct 2025 01:11:11.5033
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2ca68321-0eda-4908-88b2-424a8cb4b0f9
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: sOeIWcE5LhDDER2PJkqjfAnBcvPCvGPY04smuldmcj7pvIjNjVx6iLy/tZhn5jtb
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR06MB7711
+X-Authority-Analysis: v=2.4 cv=NsvcssdJ c=1 sm=1 tr=0 ts=68e1c5b6 cx=c_pps
+ a=5XLVA79qUcMA6Bnn+7FYtQ==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=x6icFKpwvdMA:10 a=x7bEGLp0ZPQA:10 a=U-hppK1rdbEA:10
+ a=g3VR8NYmAAAA:20 a=ddGet3y2AAAA:8 a=uPZiAMpXAAAA:8 a=0xSQ10ycAAAA:8
+ a=NEAV23lmAAAA:8 a=qy1iaRZJPzuuPv15Dl0A:9 a=QEXdDO2ut3YA:10 a=lqcHg5cX4UMA:10
+ a=3j0kk0hvlXQrNlx-I_T_:22 a=yULaImgL6KKpOYXvFmjq:22 a=CTwFTDRtctY-zZ8oRDn3:22
+ a=pHzHmUro8NiASowvMSCR:22 a=xoEH_sTeL_Rfw54TyV31:22
+X-Proofpoint-GUID: dl7l5lwiNdcWdffF8oFoEE0q-IiCeMNf
+X-Proofpoint-ORIG-GUID: dl7l5lwiNdcWdffF8oFoEE0q-IiCeMNf
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDAyMDEyMCBTYWx0ZWRfX3FG0IKkZAWU2
+ c5j5D5iJZmksj5WEqu9gqDxyqiHgmzIMBEHQ4Dn6o/8PmCBzAf/e8jxzOxSj4tQFFEb2FtOvX0k
+ M5rOtf7x46G1Ll96d4MW+MK+vHriSZ271WMhI1rBDswBSOLF1kI7LF7nRPQQ0pirGUB4Fun4Zgw
+ LtQ543mYUpcDjvKIlXgcdwX/TfiB1RFCswzbOkor5dQ52V0PvQt08ThxTMSKvAaGrAeIqvWrATr
+ xyaVb3BZAgP/IF6ApmKieYs5KHrkMznGT/D+LTTM/CkdWKGRLHtuf2G+uUz2Qntr8Cs0nCiLDST
+ 4KReUO9h1NlCwBz7RCgEiyoHdSqI+pvzQFsfCQ5vggrqqeb4khAN1mliG0gM28oZWVP/Zm3UQyb
+ wx90//vR+oZl1HueknqrM9tsJHl1RQ==
+X-Wisc_ValidFrom: true
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-04_04,2025-10-02_03,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 bulkscore=0 suspectscore=0 spamscore=0 adultscore=0
+ lowpriorityscore=0 clxscore=1011 phishscore=0 malwarescore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2509150000 definitions=main-2510020120
+List-Id: <wisc-sdc-fa25-team.list.rapidcow.org>
+
+--===============5355757369260339310==
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Considering that some of you weren't at the Wednesday (October 1st)
+Software Devel Club meeting and all of you left email as a point of
+contact, I thought I'd give a more formal attempt at reaching out (and
+maybe a chance to show-off the mailing list that I set up this week ;)
+
+So, because you all signed an interest form to be in a group project,
+you were chosen by the Club on this wonderful coding expedition with a
+group of other people who also submitted that form.  That group happened
+to be the group I am in and I happen to be the leader.
+
+In case you weren't privy to this, here is the group assignment spreadsheet
+(it is read-only -- trust me, we tried editing it :c):
+
+    https://docs.google.com/spreadsheets/d/<REDACTED>
+
+... Hence this email.  Oh and Hello by the way!  I know I didn't start
+this email with that (and probably should); I just don't want to waste
+your time and energy processing irrelevant information.  I hope you
+don't take that for rudeness...
+
+So I have a task for all of you -- can everyone tell me:
+
+  * Your preferred means of communication (email, Discord, texting, etc.)
+
+  * How much time you want to put into the Club
+
+  * If you consent to future emails (not including this one) being
+    archived on <https://list.rapidcow.org/inbox/wisc-sdc-fa25-team/>
+
+  * If you are in support of a login-protected archive
+
+  * The kind of programming you feel comfortable with doing (you don't
+    have to be good; you just have to like it), the kind of programming
+    you look forward to doing for this email (if different)
+
+  * Also, I plan to use GitHub Pages for shared place for brainstorm
+    ideas.  It hasn't been set up yet (because I need to clean up my
+    existing GitHub Pages site and figure out how to hook up the CIs),
+    but first I need to know:  How much Git/shell do people know?
+    How much GitHub do people know?  Are we okay with this or do people
+    want something that is perhaps easier like Google Docs or Notion?
+
+For example, for me, I might answer:
+
+  * The mailing list, with UTF-8 plain text wrapped at 72-80 chars
+    (I host the list archive!)  Though I am fine with Discord,
+    Instagram, texting (iMessage; I have an iPhone); or even
+    Matrix and IRC...
+
+  * 4 hours per week (minimum, not strictly, but I'd have a hard time
+    keeping up homework and maintaining my own systems if I pour in
+    too much time here :,)
+
+  * N/A to me (if you say no, you can post to the list and people on
+    the list will have your message forwarded to them, but I will not
+    archive your message.  I will assume no unless you say otherwise.)
+
+  * N/A (Please don't feel pressured to say yes!  Writing a login
+    middleware will take me some time, and it will force EVERYONE to
+    have to remember a password for login (though I could consider doing
+    GitHub OAuth, that would still be more headache to me...); say yes
+    only if you REALLY value anonymity on the Web!)
+
+  * I do web server maintenance, infrastructure, HTTP endpoints, the
+    so-called "backend" programming; one-off scripts, Unix commands.
+    I look forward to doing CGI/PSGI/Mojo, WSGI/ASGI/Django, SSG such as
+    Hugo; Golang/Rust API; but stuff like React.js, Svelte are cool too!
+
+Here is an example of all the Git/VCS-related skills I know (and
+consider to be quite essential) and would like to know if YOU know.
+Your response doesn't have to be anywhere near this long.  But be
+HONEST -- this isn't one of those end-of-semester course feedback,
+and I *will* take your response seriously!
+
+    I know the difference between the staging area (index) and commits
+    (trees), and I know how to read and write arbitrary files to each
+    using porcelain commands (git-show, git-add, git-rm; git-commit)
+    as well as plumbing commands (git-cat-file, git-update-index,
+    git-read-tree; git-commit-tree).  (If you use a different Git client
+    like GitButler, that's okay too; but just be specific.)  I know the
+    difference between a checked-out work tree and a repository, and I
+    know how to visualize a diff between the two (git-status and git-diff).
+
+    I understand that cryptographic functions are deterministic, and the
+    ones employed by Git (SHA-1 or SHA-256) are no exception; I understand
+    the immutability of commit SHAs and I know how to correctly produce
+    a permanent URL to a certain commit or blob.  I am aware of the
+    fundamental difference between branches and tags, in that tags are
+    immutable and long-lived like the SHAs, whereas branches are mutable
+    and are often transient (though I myself have yet to establish a working
+    versioning scheme or to grow accustomed to software release cycles :x).
+
+    I know how to list the branches and tags I have, local (git-branch,
+    git-tag, git-show-ref, git-for-each-ref) or remote (git-ls-remote).
+    I know how to checkout a commit using git-switch, or with git-checkout
+    while carrying great responsibility and a SHARP awareness that it is
+    a long-standing, multi-purposed, but overloaded and dangerous command.
+
+    I understand tag updates are generally forbidden and branch updates
+    are generally permitted under the condition that the set of reachable
+    commits is monotonic (in other words, let A be the set of reachable
+    commits from the new branch tip, and B be that of the old branch tip.
+    Then a branch update is permissible if and only if B is a subset of A.)
+
+    I understand what it means for commit histories to diverge, and I know
+    how to interpret the numbers of left/right commits from git-status, or
+    git rev-list --left-right --count A...B (or even a Git prompt). I know
+    a way to review the symmetric difference between the sets of reachable
+    commits using git log --left-right --graph A...B, and I know how to
+    (or at least understand in theory) how to join two diverging commits
+    using a merge or a rebase.  (Note that unlike CS400, I do not require
+    you to resolve a merge conflict; but I may ask questions about your
+    rationale for the changes you make.)
+
+    And finally, I know how to push and fetch branches and/or tags from
+    a remote repository, including but not limited to another repository
+    on my machine (bare or non-bare), a remote repository over the Secure
+    Shell protocol (SSH on port 22), and the HTTP protocol using the Basic
+    authentication scheme (RFC 7617).  (I can also correctly identify the
+    username and password of a URI (RFC 3986), so that when I share my Git
+    remote URI publicly, I know not to compromise my account by redacting
+    the password part of the URI.  (This sounds like a stupid thing to say
+    out loud, but people who have taken CS400 blissfully unaware of the URI
+    syntax exist.))  I know how to configure an upstream branch by using
+    git push -u or git branch -u, and I know that pull is in fact a two-step
+    process (fetch followed by merge/rebase, with the most possible point
+    of failure being the latter (when histories diverge) rather than the
+    former (when network fails).)  I also understand that when pushing, I am
+    uploading a complete history of EVERY file to ever exist within the
+    reachable commits, not just the earliest one.  If I accidentally pushed
+    a token, I must assume that it has been compromised, and revoke then
+    replace it as soon as I can.  I am also aware that a commit contains
+    metadata such as my name, my email, and my time zone, which is visible
+    to anyone with access to the repository.
+
+Here is an example of the GitHub/collaboration skills I might anticipate:
+
+    I know how to grant my client push/fetch access, either via OAuth
+    (for Git clients like GitButler), or via SSH public key auth by
+    registering my public key in my settings under "Access > SSH and GPG
+    keys", or via HTTP Basic Auth by generating a Personal Access Token
+    under "Developer Settings".  I am aware that, if I sign a commit/tag
+    using GnuPG, I should paste my PGP public key -- exported in the
+    format of ASCII armor -- to the "SSH and GPG keys", and that all
+    emails listed under my identities should be verified in the "Access
+    > Emails" panel, so that GitHub would mark my signatures as trusted.
+    I know how to create pull requests (draft or not) from another branch
+    in the same GitHub repository or a branch from a GitHub fork.  I
+    know how to suggest a patch to another person using a "suggestion"
+    code block (as shown here: <https://stackoverflow.com/a/69044609>) and
+    I know how to accept and apply a suggestion patch to my branch from
+    which I created pull request.  (If you have contributed to a project
+    on GitHub, tell me!  Even if it's just something like fixing CPython's
+    documentation or correcting a typo... you don't have to say what you
+    did specifically, but the fact that you did anything at all helps.)
+
+You can email the response to me privately, or reply-to-all on this list,
+or use Discord channel that folks at the Software Development Club
+created just for us in:
+
+    https://discord.com/channels/<SERVER_ID_REDACTED>/<CHANNEL_ID_REDACTED>
+
+(If you are in the server but do not have access to the channel, ping the
+Admins (not me)!  I have no control over this. :)
+
+--Ethan
+                             * * * * * * * * *
+
+(Other, less important info below.  (If you want to be on the list, read on!))
+
+The Discord server is also home to many other resources, such as the meeting
+slides some of you have missed.  Even if you are on the Club's mailing list,
+I highly suggest that you join the Discord server with your account even if
+just to know when the next meeting will be (which is next Wednesday, October =
+8,
+Morgridge Hall Room 2516 by the way.)
+
+If you aren't already in the server unfortunately I can't find my invite link.
+They don't seem to provide a permanent invite link that's just public out
+there for whatever reason, and I want to respect that.  That said, it is
+your choice whether we end up using Discord, email, or whatever.  (Matrix,
+even!)  I will be using my crude setup of a mailing list for announcements
+like this and important changes to our Git codebase, which (mind you) I
+maintain a copy of on the Web too.  For example, this particular message
+will be archived at the URL:
+
+    <https://list.rapidcow.org/inbox/wisc-sdc-fa25-team/1759626667.1796322.df=
+64AEa1052d0@e.rapidcow.org/>
+
+(Don't worry -- the important links and your emails will be censored.  The
+inbox database isn't fully synchronized with the IMAP inbox, and much of
+the work is manual by me anyways, so I might as well blur out things that
+are important. :)  Nonetheless, if you don't want your message to end up
+on the Web at all, please remove
+
+    <wisc-sdc-fa25-team@list.rapidcow.org>
+
+from your recipient list (both To and Cc) and I will know not to consider
+it for archival.  If you Bcc the list instead, anyone on the list would
+still have that email forwarded to them, except I won't archive it (as if
+you have opted out this one time).
+
+No one is on the list at the moment.  I know you all are busy people with
+busy inboxes, so to put yourself on the list, you should voluntarily
+opt-in to email forwarding by send an email to
+
+    <wisc-sdc-fa25-team+subscribe@list.rapidcow.org>
+
+from your preferred email address for subscribing to the list; and
+
+    <wisc-sdc-fa25-team+unsubscribe@list.rapidcow.org>
+
+to unsubscribe.  I will not archive emails sent to any of these addresses
+with the plus sign.  I will also remind you the instructions for subscription
+/ unsubscription every time you email to these addresses.  (I am currently
+unable to add a footer / List-Unsubscribe header in the forwarded emails as
+they are pretty much forwarded verbatim (minus SRS rewrite), so please keep
+a receipt of your subscription in case you need to unsubscribe. :c)
+
+Regardless of your subscription status, you will always have access to
+the list online at list.rapidcow.org, or in its raw form at:
+
+    <https://github.com/rapidcow/list-wisc-sdc-fa25-team>
+
+All of these will be updated shortly after I send this email.  Thanks. :)
+
+--===============5355757369260339310==--
