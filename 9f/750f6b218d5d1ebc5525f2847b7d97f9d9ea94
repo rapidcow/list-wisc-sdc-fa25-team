@@ -1,0 +1,241 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.0 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_INVALID,DKIM_SIGNED,DMARC_PASS,RCVD_IN_DNSWL_LOW,
+	RCVD_IN_MSPIKE_H5,RCVD_IN_MSPIKE_WL,RCVD_IN_VALIDITY_CERTIFIED,
+	RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,URIBL_DBL_BLOCKED_OPENDNS autolearn=ham
+	autolearn_force=no version=4.0.0
+ARC-Seal: i=2; a=rsa-sha256; t=1759904380; cv=pass; d=forwardemail.net;
+ s=default;
+ b=UrSMa72MAuEa6Uc++3IhHJP9MT59dy9FwoJPAMfvoZlWfzyXD6FnxFwDNEAd1+aGD+R/ctffY
+ 8wtgvkcHmr4BBvfEF0nKvH3MLKdInlSrqjVztbVaXl4glBOXzuzwKVL97Jb0talcS7CrouPZjZ6
+ Gj0y/pzhqzblych3NLVKpLw=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=MIME-Version: Content-Type: Subject: References:
+ In-Reply-To: Reply-To: Cc: To: From: Message-Id: Date; q=dns/txt;
+ s=default; t=1759904380; bh=avt1p4gnQQKjBv8DVw7YzSRZeoOcsLDxDS9sN1DEP8o=;
+ b=lguSq2nUQBWqkiQn3r+dvW4IkUiG133MTOoe8Fpn7jsMsjK1Tel3SZ8pbG4ftq9/kOL1YDyOW
+ pZZqv4v+xmQyv3eaRghsK4QAocxTANPLTeDIJloZ8YDJBDd8Grqn9P/cTSbhaRZNNxYBh+mwpG9
+ 8EhSXZDzVFA+u3aaFZ4/8wc=
+ARC-Authentication-Results: i=2; mx1.forwardemail.net;
+ dkim=pass header.i=@wisc.edu header.s=pps1 header.a=rsa-sha256 header.b=IOxES33d;
+ dkim=pass header.i=@wisc.edu header.s=selector1 header.a=rsa-sha256 header.b=hACeTV6U;
+ spf=pass (mx1.forwardemail.net: domain of ethan.meng@wisc.edu designates 205.220.177.71 as permitted sender) smtp.mailfrom=ethan.meng@wisc.edu
+ smtp.helo=mx0b-007b0c01.pphosted.com;
+ arc=pass (i=1 spf=pass dkim=pass dmarc=pass fromdomain=wisc.edu);
+ dmarc=pass (p=QUARANTINE arc=pass) header.from=wisc.edu header.d=wisc.edu;
+ bimi=none
+Received: from mx0b-007b0c01.pphosted.com ([205.220.177.71]
+ mx0b-007b0c01.pphosted.com) by mx1.forwardemail.net (Forward Email) with
+ ESMTPS for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256); Wed, 08 Oct 2025 06:19:37 +0000
+X-Forward-Email-Sender: rfc822; ethan.meng@wisc.edu,
+ mx0b-007b0c01.pphosted.com, 205.220.177.71
+X-Forward-Email-Version: 1.2.14
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Received: from pps.filterd (m0316042.ppops.net [127.0.0.1])
+	by mx0b-007b0c01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5985jg3d012592
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Wed, 8 Oct 2025 01:19:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:to; s=pps1; bh=avt1p4gnQQKjBv8DVw7Y
+	zSRZeoOcsLDxDS9sN1DEP8o=; b=IOxES33dih+uw9dpK2y3DveNWjcsFI9uIAFP
+	Jr8zrVNWfJK1C9NXXhUVRmXczxzRGuNoJFJNtImm9irNhHw7d9ocVsNw7fQ1httS
+	UxpeB3S7aiR3+thqz1YSNiVFJicjU6BYXYqRL0e37eiUdAUL96i+7XgD9S7MNIa0
+	ouXVIVLx8F/PXiKo+nYBiglm66H7BOhExO3G8pxwSkffJ5TtfrFi39MTwPWqr30B
+	9gMMtA6aQBoGhdxhkGGrb7d8fyzEkBjPjmfkuV6wYRqzyh1/ElDedW5SChGGRVu8
+	KJ42kGxT61xGO50bL9OITbzjMEdJawkKf09wTGjRyyeb1pKgVA==
+Received: from sj2pr03cu001.outbound.protection.outlook.com (mail-westusazon11012022.outbound.protection.outlook.com [52.101.43.22])
+	by mx0b-007b0c01.pphosted.com (PPS) with ESMTPS id 49mppn8ebv-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Wed, 08 Oct 2025 01:19:37 -0500 (CDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=uQzOjOA3YOfwVeOADh5ZVxvim//IrqhoseBowzDAtQViV4cc8JGY3E3GwIiP8T6e8xvp1U0oWX3lhwGZ4+tN12fqcabj6DQ7TqtWecvKV6di7Rs4Hu72IG0+Uctp1mr1zmERRbX81/kWtFPhCLnZNAvfPVxAwdngmpg7W7EYYXry4GfNhixMilxqYncMC8tPymypZ8AdSSYY//0JLmA/bHfHns/UNzpJBiSZAX9xxY2QlxQNBJdj3XAF18EojlLeaN4aFuYXCfbFFMUYj2awOQbAFC5U8XV5mDN+craE7TmTwd6aJjLodIf4kukmniH+5rrvAcyYzwcSAdpCINm1aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=avt1p4gnQQKjBv8DVw7YzSRZeoOcsLDxDS9sN1DEP8o=;
+ b=RA+pUwKGyQUUv7XfODDdM2cxzD+CHqQA2Do/i0yXd84ZyWyJeLX67SxB/VM1Cclw+s+4AZyr1WOkr+ITRYzqbPi3C6Lo3Cu7NnsMDzm9bn2fsCfAYTmcW9fosPD5aW3nl7bJQfel5n2xNisYwG82ztYpyLTFH2TCFH0sbnzvvEDCpInFgIzeknZqm1+SUnS/nLA//uKc9q9Z9FpQrlC+oa/s//Adm4EGinKajN0Y/V14wy+gfgB0WqiUhLVQ/RaBO8y2GNQxq88ZXH1Ne+/bQwswxL3hGEAyy40ihF64VXPkQ1lxoslyqebd6kJII0/HfXnN9sjxVJPMOu9+30plMQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wisc.edu; dmarc=pass action=none header.from=wisc.edu;
+ dkim=pass header.d=wisc.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=avt1p4gnQQKjBv8DVw7YzSRZeoOcsLDxDS9sN1DEP8o=;
+ b=hACeTV6UXKZzftsDsFbUWoA4izXGoKTsYdmqroOCVusXwxcEoDq/3JsEUfz8NnP96AadW9dMpNLSkuQKJBhfXcI5BOOMd5dbVGGldxe0TacZNIJmK6ieGert/wT0fbIa6NcbrUKx5xO9NcppmZpdr3x/IpWDTsabywUDvDDlTuskPOWD7ApqOjGEeRAp6784vDYAktOoS3wgOcSBeCvOcocamsHMQZoJkfWWN8wNZG1ArO0XbxbR23tzHy4XniqJsb/8z0IFKbB/xBGB1/9kN8rKqv8TFw7cG88SSm7Yv4K3NLXYxu1uxSgKsg7zTYC2IaBC+Dpq8G8usBQTp34wiw==
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com (2603:10b6:408:19f::14)
+ by LV5PR06MB10915.namprd06.prod.outlook.com (2603:10b6:408:303::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9182.20; Wed, 8 Oct
+ 2025 06:19:30 +0000
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb]) by LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb%7]) with mapi id 15.20.9203.007; Wed, 8 Oct 2025
+ 06:19:30 +0000
+Date: Wed, 08 Oct 2025 01:19:05 -0500
+Message-Id: <1759904345.108008.0bfEc1bdDAAaF@e.rapidcow.org>
+From: Ethan Meng <ethan.meng@wisc.edu>
+To: undisclosed-recipients:;
+Cc: wisc-sdc-fa25-team@list.rapidcow.org
+Reply-To: webmaster@rapidcow.org
+In-Reply-To: <1759626667.1796322.df64AEa1052d0@e.rapidcow.org>
+References: <1759626667.1796322.df64AEa1052d0@e.rapidcow.org>
+Subject: re: SDC Team 11
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: CH2PR03CA0011.namprd03.prod.outlook.com
+ (2603:10b6:610:59::21) To LV3PR06MB9453.namprd06.prod.outlook.com
+ (2603:10b6:408:19f::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR06MB9453:EE_|LV5PR06MB10915:EE_
+X-MS-Office365-Filtering-Correlation-Id: 075501d2-9256-408f-eed6-08de0632a3c8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam:
+	BCL:0;ARA:13230040|1800799024|366016|41320700013|376014|8096899003|13003099007|48736001;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?RTRFbjI0eUZONHluNlBhOFZHbkFpV0E4QXhlbS9wb1U5eXAzWVBXcUovZVVh?=
+ =?utf-8?B?QXgyKzJIc3dmWmc5RVc1ek4wdHNlK2RvaVRDZmthN09XNVVnYldUMlBVVHVZ?=
+ =?utf-8?B?M1ZWOWo5cnhWNFBvZW5KWlVmTU9jNURlZ25ITS9OT0NVdmZNR2FQcWRMYlEv?=
+ =?utf-8?B?ck1jU0VremlxZzk5dGd4WHJOckR5OFVidEVyOXpwUm5LK3BmRnJ1NFJrUjN4?=
+ =?utf-8?B?a20zdVVBVGg0L1RjMFY2Y2lmSE83L09VcmFCa0JqaFdoOHBQOUV2K05hOUI1?=
+ =?utf-8?B?TlBvaVdFR0RteGluc2EyekkySXc1WE9ZUjFWSXRsSWJCd3NPM1dYUmp0VEZm?=
+ =?utf-8?B?UVFnV3ZQeWpnYm9Kb0QraDllZU5lbDBYZU9nTGgrdHUvZi9DNjRXTEtCaEZ1?=
+ =?utf-8?B?SGh3a3UzZE9PRlNlNkZ5L3VxcjhNc0JiQzE4T0dzcEIyb2RybTVTRkZiM3FW?=
+ =?utf-8?B?bmF5MFRRTWNMK3RQQXVwK1prK2VCZ3d6bW5DMXpzMStuQWdpQTdQTFh3VXRv?=
+ =?utf-8?B?d3JGM2xKaDkxYjcyZloreFFoNStNL1VWOVFSa240UnJOZTVWQnJVMGU4c0Ju?=
+ =?utf-8?B?QmVQMXZmdGhuN0tJRWhqejl2Q2lHYk9WcnZabGtHcnV0VDdkRTRwd1lmRTJi?=
+ =?utf-8?B?Z2R4bW4rVE8zMGpQSmtxM1RGdEZIVm82MVY5dXk3SlhuVWhIUWJoWUlmWjdv?=
+ =?utf-8?B?WmRyK01iWURlWUNHd2R3c3hXcktZZlJuMUY0UmJwc0xoR1lrVFpWK0d3YW1u?=
+ =?utf-8?B?UGNWVXlFZmVZMENjSmorNlFwYWZsNnNCOVllSnJ5OFc2VlVNTWQwbjl2NkJy?=
+ =?utf-8?B?b2RCT3NQSWJyQUxoNHBaZGFLWURPMGVpWE5mYWc0cTFna3NRNmxSZ2paK2Jy?=
+ =?utf-8?B?ZHFMZmhRNkpKUHQ0NDZnNTRsd3NZYUs3MzFiMFZ0WjZIMGp0NndMSlcvcWR3?=
+ =?utf-8?B?NXlhdjl0VDVyTm9hQXhydG9xbEZDQ2YxK2dCMVRZc0Q0VHA5YTZxWkhTSlB1?=
+ =?utf-8?B?TERtMVhjd25DZ2xSQWh1eXpwRjF2ZmdyR1dWUFFCSDlQOGo3VVZBeE9ObUNU?=
+ =?utf-8?B?RytINndnT0xmQjJ3dzZKeS9GblFDUGtmTWd6MnlhRERmQ2dZeXdqcm1jUUs5?=
+ =?utf-8?B?Y2RqdGpyVnE4c0MyM1VRTjNYVUFqazZzRDQ4M3BQNVJUZytkRDZlL3pob2pR?=
+ =?utf-8?B?Y3ZpY2F5S1B3TUN5U1YycXdSMGM0VTR1L1BLUlQrYTE5RFBBUzUwdHBQQlQ5?=
+ =?utf-8?B?VlBPY3JNSC9OdGFRdHNFayszdVZyTEdBaW5KMExFM1hWZEZJRjJxbjJEeUYx?=
+ =?utf-8?B?eFRvN0Y3ZmpqTmpicDVVSk9HZW1odnFveDZCdURGdG5EaXlkZ2VlNkhCUUdz?=
+ =?utf-8?B?bTlCUnd6aGY1dGZqYjBaOEdlN0VRVG1SSDlmNlo3UHZNK3hzMWVUbEZGZi8z?=
+ =?utf-8?B?dUplUGVzWVYwcWpXcjU2RUVqRWdSbk1UbGhPNi9Gd1l4ZGpFTW9DMHlsYzNy?=
+ =?utf-8?B?YXliUUpDVlE5N2NBTU1CMjdMR0lxWXlGU0VBWkJTc3F1NkJEdkVlVVZuTEV6?=
+ =?utf-8?B?RlMrTkNGZ2NLV1VYbW5zZjFpZEJmSVBUODRPOG01QXZod21BTFYyS1ZhWk9w?=
+ =?utf-8?B?ekE5ZVBCdWUwOVZoRXNob2d6cjUvdHJYWG5mNXZrYUw0eGJ2d05iVUtOSlpC?=
+ =?utf-8?B?bmJ3ZnlyR1RqbU5hVitBbmRTVm9hYkFyeUNTVlZwWk1RZ1VkRnFPY3JzSkN2?=
+ =?utf-8?B?UUpVUDVaeEMzV2NPVkdsenI5MUM2ZzEzTytBbFV5TU1FdnNhdTJiRlZnQnVM?=
+ =?utf-8?B?ckRTQlRJOVZtZjNqUUdYT1RIbUdKUjUwRWMrQ3UzMi9jamRLb0gyMGE1dWFn?=
+ =?utf-8?B?SVRRVDRMcGZ0bmd3OXhsRXowOXNFcEFiVTRmRW80QlBxNjUwODI5a2wzL091?=
+ =?utf-8?B?RGZwN1Ywd21oNjJDVTN0RDBBckZaMlpMVHR6WmZvZDA5M1hMMzlLUU40K1E2?=
+ =?utf-8?B?c2kyRzFFVkViaUVjbzZMODYxdUZNTDYzMGhIMERJSlVnSHBRMjJKN2NaME5y?=
+ =?utf-8?Q?s3IIu7?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR06MB9453.namprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(41320700013)(376014)(8096899003)(13003099007)(48736001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?R1JiNW5CWG1YR1JkSHptMXkwRENmaHR4bVJTSXJXRjdDdVViUEdQY25MT0JC?=
+ =?utf-8?B?d24xNC9EcDMra3JVeUs1WnpnaStFcE5nT0JVZm8wc1RYLzF2ZFVVWU5tSTJ0?=
+ =?utf-8?B?am80a0UybkpuT053UHJsVnJrSkpLTFBJeUdFbWlxQ05zZDgwU014bWJhUThH?=
+ =?utf-8?B?VHhwZVdwdnVFM1VyRWNIcVZ3a2lSQ0VBWVU4a3BUYk83WlQwbzNCalR1bWtB?=
+ =?utf-8?B?N2lhQ3p1dUMzMEd4QTFmWkFjN3BmYXY3c3RmdlcyZVg4STM1c3gxSjZWYWlW?=
+ =?utf-8?B?YnVqTUNRZXBoYXFCaTVtL0oxVi94TWdwZjFLTk1nUkNzNHZ3c1VYY2s2NkFp?=
+ =?utf-8?B?UENxdUx2OHB6QTdWM1Y2K3o2V3JJWDBOQmZSTWdKZExRZFQwZUxoMjFVZ2Zw?=
+ =?utf-8?B?OXhTM2duNng2bnR1M2VZMFpRVWlqZno1QmNKOE9BQzVtMVMxOWF0Mzk3d3Jz?=
+ =?utf-8?B?OGJJVk1tV1BuclJlV2xmYVpJNVhxUVNEQWhrSlFnbG1zT0Y1V1dVMW81WVA2?=
+ =?utf-8?B?NmFiQ2RXVnJRYVlzTUV6UzMvSm5mVUdTeDB6VTRiNWtOaDNsY0lBOVNmSzQ0?=
+ =?utf-8?B?c2QxVWZXWk9jMFg4cUlkcVNtWTEvN080SUdaM0E3MERuVXpaaURValVvV3VZ?=
+ =?utf-8?B?ZmlyQWs2RkMwM1JYenk3aitSNFJLQ1dKQTZlc05OU0duMlE0andDeFJIcG9S?=
+ =?utf-8?B?MEllVXJlOFdLQ3RVeVJqUjY2L1RaWmFWZktuSUw1WE1jSDlQWDFlRlBJcFdD?=
+ =?utf-8?B?M2l1RkUrcXdCeTdQcm52QXJobW0zeCtUVlJDekk3MS9GZmN4b2U4OGFrSWM4?=
+ =?utf-8?B?cUx3U01qZGNWMDZ6US82ZFoxL2IwRE5Nb3gxTUdrQUtHVjNUTGJKU0E2ZGZz?=
+ =?utf-8?B?MHgzSVkrWXFWR2FuYlgyajUxbzJTS3BEditZQllsME9LK0ZNeGN2T0JNa2tq?=
+ =?utf-8?B?K3VlMUh4Lys3OHRLNTNjVWx3bmJSWHlJR0Y5MHNLeUFXUURuNGYydVZWOUVl?=
+ =?utf-8?B?OWdBbEJZSUFSTHFNRFJmbE9BN1VxYVFUczZUc0p1dk1MUGd5azMrM0hQSkNo?=
+ =?utf-8?B?bUlVZHlWc3FDU21USUJJbWlJTUNDaUxBeFJSc0x4cGZmdEdvQkpGdGNPODBm?=
+ =?utf-8?B?T25YT3JiWmpUekdjQzc5clF4VkJrTlVRV0RHb2V2TnQ2cFE2elRIZU9PZ29N?=
+ =?utf-8?B?QjVpREo2Vk14Y0ZZSUNndEpnN3F4VUJaWTNQR1JCdGdhQ3U5KzlPa1p1allQ?=
+ =?utf-8?B?Z0lmd0JDT1FlZVJHemdEVHZITlcwekUxQndCSWFtakNJekZNT0lsOU9Oby84?=
+ =?utf-8?B?SWtXZ3FqVWw4R2dKMDN3ZkNvMWlVb0hGRnhSMFBNbnNDRnNCQW1LQ0xtd0JZ?=
+ =?utf-8?B?bnZUcVpIMHM1dEdWUWJiM3NJZVhvaEVsTHRtbnBSTkZqWm1FbWhLTXRBNlJs?=
+ =?utf-8?B?SitmYmRuemNDQ3dGOEtsMmxHZzhZSWc0cS8zS2xjdis4OTBwdWJ4dytuaWNG?=
+ =?utf-8?B?NFJ0NDh4MUJMMjUwZ01xVk5PM20zdzlnOGZ0Y09adjdiL1hiajlmWnBnT2lN?=
+ =?utf-8?B?cHRXV3U5dUV2M2tqTFVzc29KL3JjVTQwVXY2aTE5QkJ2eDNHUkdiKzExSWdS?=
+ =?utf-8?B?WG84d295b0ZYRXhsb2lBNlZVM3NhL1R4ZFVISFljSFRCV3VhZy9CSFpLNW92?=
+ =?utf-8?B?QmRqNU9td05HYUVNRSt2cHk2R1l5L000a1RhZHFQNjB0ZEFvTW1tSzVhYzBJ?=
+ =?utf-8?B?REhUM0FiMjIwTjdkUGkyaTJXSjVOVU9GWEI1Z245OVRFNG9aNjdaOXpPU25p?=
+ =?utf-8?B?dzhBUGg1R3VyNFlHUFVKZ2YzTHBYUUtiRmZJMFZMK3Foakd3QXZ3SDMyRXA2?=
+ =?utf-8?B?Q2phNnVDcUIyMHREWWRjWkp0TVdldkRvU3RZSVRHd0RXelNIakN1NksxMDMr?=
+ =?utf-8?B?V1poNTJnZnBFZ0tqdjVGSzVHMklwR0h5TGZyMWljdTUwbVNIUUFCS21VcFQx?=
+ =?utf-8?B?NzV4SUVrVDlJLytmMzRiOEpnSG9qSk1XOS9DcHNSaUdMMTcwYXVTQjNaanFD?=
+ =?utf-8?B?amZzRDBaeUIzWTZVekNjWkhPaFJ6Ym93WTdrUFpha0tVUTNBNS9DSjBNOWll?=
+ =?utf-8?Q?+SnsYJ8NKulHlWJUWm4NDz6Yp?=
+X-OriginatorOrg: wisc.edu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 075501d2-9256-408f-eed6-08de0632a3c8
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR06MB9453.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Oct 2025 06:19:30.0951
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2ca68321-0eda-4908-88b2-424a8cb4b0f9
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: sVTlgvg7fLj4BbQlVj6lTX1eslPsPyQ9ZVVUPu4LjwGWJosnNz/YaKqTp4i0mGyk
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV5PR06MB10915
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDA2MDE3NyBTYWx0ZWRfX6+/0U4AIIArs
+ yAs8Y8c5MCRNOw+/SNNgudRBR+XXQDy0QV0Uq91GUm/WuMQIjzzRhmtZ5/5tQ1+TrQq6fB92rbf
+ eDYqdS/VoZZ44tCQi7OBFN1/pvXPpAZXOs6ai5JrwNll3JtFM9YVDMfGvBDhLH2BeBBuCGoFcj6
+ rDj4ZFVspLTueBZ7yJu7ONPZ72jWrkzxyghOXWrqNyEZzFZjc5M6GKYKk1vfZAPRd0oKQCNoKQq
+ CA9ddfrdfretOIwGyyrtx1XP/2l6jKG9755K8X8pCU3DW4V2Ph2U6nfEhUDw8h/M/7KhxPry16a
+ F/qP+7DG7o4nt1oj4+EilJA4zJw7AbEtW6tLYjCszlIkbJWJtwKpnU4WwzzlgDl0mhFAuDx6uvc
+ uD/U/IzAEfHfG80HuIcm0ZBwlh8YTA==
+X-Proofpoint-GUID: 6TUqb8eVF9ZviyLlCWXNKmNwhKEdzaA3
+X-Proofpoint-ORIG-GUID: 6TUqb8eVF9ZviyLlCWXNKmNwhKEdzaA3
+X-Authority-Analysis: v=2.4 cv=LqefC3dc c=1 sm=1 tr=0 ts=68e60279 cx=c_pps
+ a=DKBbczBT0NfZzOMt9NccUg==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=x6icFKpwvdMA:10 a=x7bEGLp0ZPQA:10 a=U-hppK1rdbEA:10
+ a=NEAV23lmAAAA:8 a=ddGet3y2AAAA:8 a=1CPp2iQYFwkNJbDkenkA:9 a=lqcHg5cX4UMA:10
+ a=QEXdDO2ut3YA:10 a=3j0kk0hvlXQrNlx-I_T_:22 a=HhbK4dLum7pmb74im6QT:22
+X-Wisc_ValidFrom: true
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-08_01,2025-10-06_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 phishscore=0 priorityscore=1501 bulkscore=0 clxscore=1015
+ spamscore=0 adultscore=0 malwarescore=0 lowpriorityscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2509150000 definitions=main-2510060177
+List-Id: <wisc-sdc-fa25-team.list.rapidcow.org>
+
+Hello again members of Team 11,
+
+a reminder that Software Development Club is meeting on
+Wednesday (today) from 18:00 to 19:00 in Morgridge Hall 2516.
+
+I will be talking to the club to see if they can let me in a
+different group (if i don't accidentally fall asleep before that).
+it is possible that i won't be the leader of this team (if this
+remains a team at all).  Please talk to the club or let me know
+if you think the lack of a leader is an issue.
+
+In the circumstance that I stop leading this team, i cannot guarantee
+the availability of the list archive at list.rapidcow.org in the future.
+Kindly refer to the archive hosted by GitHub, and check out some past
+point of the commit history, if you want to re-obtain any past email:
+
+   <https://github.com/rapidcow/list-wisc-sdc-fa25-team>
+
+If you come across technical difficulties with Git and need a
+copy provided to you, please <mailto:webmaster@rapidcow.org>
+(and ask nicely since I am not legally obliged to do any of this.)
+
+I wish you all the best of luck from here... it's been nice meeting
+some of you, but i have not been going to bed before 5am, so i will
+cut you some exclamation points i am not in the mood of typing.
+
+~ethan
