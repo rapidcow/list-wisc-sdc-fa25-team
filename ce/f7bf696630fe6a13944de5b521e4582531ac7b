@@ -1,0 +1,471 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-3.3 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DMARC_PASS,RCVD_IN_DNSWL_LOW,
+	RCVD_IN_VALIDITY_CERTIFIED,RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,URIBL_DBL_BLOCKED_OPENDNS autolearn=unavailable
+	autolearn_force=no version=4.0.0
+ARC-Seal: i=2; a=rsa-sha256; t=1762459494; cv=pass; d=forwardemail.net;
+ s=default;
+ b=UDeDhVE6cSAe2Oa+92hDTjIsG7fQxUgQVTslf4Qy34GZOmIGQTXxY8TMpGZVigHjujvZrOcAg
+ ksGRO7N1r0NniQWOEKqu5vbWNs50jbHCW4+IH9q4XG8WDMp+G4enYOI3vaziv2xNrBKNw32E9Aj
+ HRiCTLcTKqIWHZMW8gnSyzE=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=MIME-Version: Content-Transfer-Encoding:
+ Content-Type: Subject: To: List-Id: From: Date: Message-Id; q=dns/txt;
+ s=default; t=1762459494; bh=UlOUvi6n/tK7gPe983W4b/uD8AH90+oYC1DXQWUvcWg=;
+ b=W/9mE1os/DZvYRnl4lsn9M2fki4a/hj4xEdI8smFhm+Gd0aCPlFrOZ3z2E5j/tkOylU1N5qmZ
+ 8QuMMNYuPgG7tsMvrFeHAYh1di99lquQaMDwwSgZfshweVMxYawlY3cSFEeyejnOtwvcejzUqu3
+ L8raYWM8XYATxKGOuCtL0zQ=
+ARC-Authentication-Results: i=2; mx2.forwardemail.net;
+ dkim=pass header.i=@wisc.edu header.s=pps1 header.a=rsa-sha256 header.b=C+InOt2h;
+ dkim=pass header.i=@wisc.edu header.s=selector1 header.a=rsa-sha256 header.b=5beftp6k;
+ spf=pass (mx2.forwardemail.net: domain of ethan.meng@wisc.edu designates 205.220.165.71 as permitted sender) smtp.mailfrom=ethan.meng@wisc.edu
+ smtp.helo=mx0a-007b0c01.pphosted.com;
+ arc=pass (i=1 spf=pass dkim=pass dmarc=pass fromdomain=wisc.edu);
+ dmarc=pass (p=QUARANTINE arc=pass) header.from=wisc.edu header.d=wisc.edu;
+ bimi=none
+Received: from mx0a-007b0c01.pphosted.com ([205.220.165.71]
+ mx0a-007b0c01.pphosted.com) by mx2.forwardemail.net (Forward Email) with
+ ESMTPS for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256); Thu, 06 Nov 2025 20:04:51 +0000
+X-Forward-Email-Sender: rfc822; ethan.meng@wisc.edu,
+ mx0a-007b0c01.pphosted.com, 205.220.165.71
+X-Forward-Email-Version: 1.4.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Received: from pps.filterd (m0316036.ppops.net [127.0.0.1])
+	by mx0a-007b0c01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5A6JurmV015714
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Thu, 6 Nov 2025 14:04:51 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; h=
+	content-transfer-encoding:content-type:date:from:list-id
+	:message-id:mime-version:subject:to; s=pps1; bh=UlOUvi6n/tK7gPe9
+	83W4b/uD8AH90+oYC1DXQWUvcWg=; b=C+InOt2hFJ0L/XphSkvOCKGf7QiBkqnR
+	hYkDLK6Le41NK1i3cKfo9D44GuVoHy6LYDdWOU6eNt8wqZ5+kQ84giZ4wVOBzMG7
+	JEzBDYS6TAu8hAkjb+YZw7VX1Nqa4RT/AtxmZK6gHdKYpab44f9hqSGeGFfnhf/2
+	h67GnPOznuNYPg4jA1qw++Je7Hh44oWnu3zyr7ZKN9elzHxN0w+8K/mbEGQu8qJT
+	fl3C8Rb5T3MW58HsejbhdRV/YaEDeAF2FTsQAEHpKeOi0n2RjTO1iJ1l8VS2EaW+
+	nltWeFoBpRZgDpHceIhHIZ5z25YtVgF9N0VRFmNl0Xc4xLa6oJBBnQ==
+Received: from bl2pr02cu003.outbound.protection.outlook.com (mail-eastusazon11011062.outbound.protection.outlook.com [52.101.52.62])
+	by mx0a-007b0c01.pphosted.com (PPS) with ESMTPS id 4a929g02qr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Thu, 06 Nov 2025 14:04:50 -0600 (CST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=eQASSSPyG/sT3/NUhhxpeIgCNL1NTAF9xC0ZrgCKM7NMwl1paeH+Qjb7KBYVEj/voVed/GDsBdI/H0UvM3bcoqscaWEkIxzyyjF0FF/9lZiXKnxX4RB1LJp5bqtNvQLmaEAlJ89ipC18uP221g5F8yNPaz3cynGv5z9eX0WcZVRFnPhQ/R4PDHVsUf11z+7cKpakBdwhw3Qpe0WkZEEkvKCkLHZ9QeLxtrY0Io7uiu3ddOWJr/c/32sHMVUKBf9fn9EocoHF0VsizbwYSI29B530h4iq9+Lf4L1WAQW33OkLva72Jn+0ZWVxOrq1jLxizNTAvaAsYPntxYDmJyE0jQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UlOUvi6n/tK7gPe983W4b/uD8AH90+oYC1DXQWUvcWg=;
+ b=JoETKja+qYygg800ON/CKmqx2xcp7damNlFo0bzl3oegcuAdcU5ZjbGREWrR83ZNfaolCriRlmbYW4Iz60J7YNoxvszFvzQHquwVk4UT4j9ho4l1YAy2mrMq4Eu491H+nSZkJG1BllG9atm0Exy32aJdyA4fLCuYjP7MDA5aClMhGTapxraLzn2SX5JGTsWDGfFW7NDOxtb7hbow5NN7j5bzPkbC4MKBon3ACeZIRok8IBfQm3eUJkopEg3VvxXm9MF1vjoZ5zrq6Mrk+LpBREyhx7pCzNC4L8fQ2+gRmNi0lVYO8UkCDOZhCwyIr4V+8O0EI17T+PaSRZsQjS3c9g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wisc.edu; dmarc=pass action=none header.from=wisc.edu;
+ dkim=pass header.d=wisc.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UlOUvi6n/tK7gPe983W4b/uD8AH90+oYC1DXQWUvcWg=;
+ b=5beftp6kFGXRxld9pcNmy4IhoeZh9E/lX/oVYaCmkhfW3j3GmY/vsyWwzPA+6mXy4Gn0nhDAo2W4L89aUntsWRjH8OtmG66YCC+TnMHMPLCmR0r3KqNQhRaeqJUtPJIbBk+DkNARdeNTXC8+z/qAKqMCPWNJmel72GSmdQI84+PH/6Fc9SsRMOM3hnmZrDrcXlQUtkM5LdlTxVu3xsXALFJ6PsOAu2tj67c5HLbujD0vbxw640c5/CVIn7P7lv9bT+WSxlndzuCuzyrXzk+y4AnYpK1LhextDhgyy7wrmaJVmWBYNombvILqg5Sic0Kc49cja/E2THFPgxO6obnS4Q==
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com (2603:10b6:408:19f::14)
+ by DM6PR06MB6618.namprd06.prod.outlook.com (2603:10b6:5:22f::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.14; Thu, 6 Nov
+ 2025 20:04:47 +0000
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb]) by LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb%7]) with mapi id 15.20.9298.010; Thu, 6 Nov 2025
+ 20:04:47 +0000
+Message-Id: <1762451972.pull.1.v1+a3dfcac@x.rapidcow.org>
+Date: Thu, 06 Nov 2025 14:04:37 -0600
+From: Ethan Meng <ethan.meng@wisc.edu>
+List-Id: <wisc-sdc-fa25-team@list.rapidcow.org>
+To: wisc-sdc-fa25-team@list.rapidcow.org
+Subject: [GIT PULL #1] PROJECT DECISION! Club Radar and boiletplate friends
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: CH3P221CA0021.NAMP221.PROD.OUTLOOK.COM
+ (2603:10b6:610:1e7::10) To LV3PR06MB9453.namprd06.prod.outlook.com
+ (2603:10b6:408:19f::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR06MB9453:EE_|DM6PR06MB6618:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7c82a670-23fb-45da-d5b9-08de1d6fbc0f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam:
+	BCL:0;ARA:13230040|366016|1800799024|376014|41320700013|13003099007;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?NXdUcHpkZ21YanhpbXVMUGs0TG11bzVhZnErTHFaY3lSNjRTWWIzbm5PS1Nn?=
+ =?utf-8?B?ek9oTFVPZGRmNjlTTXQzNzN2MkxOMFVzVC9FaS9MTHM1cVNQZVV1dFZBaGd4?=
+ =?utf-8?B?dXJ1SisyZ3dkS0dIZjF1WUVoWU9UaUd3Mjlnd084MGJrb2pRaU0rMVpRNzRm?=
+ =?utf-8?B?Wk9STGhVRWRhdGE4NHc0dUZzVlFrNDZtbVJLTWtZeXdkbWpBK1ZsOVRtZU5Q?=
+ =?utf-8?B?UzVrOEJIZGtUekVCRkt3OExXeW1Xci9nRzRMck4yNlMyR1FLSnl3Ny81Z3My?=
+ =?utf-8?B?QytVVGdvaVRHV0YxdWZaUy8xUmtKRzVWOXdRanBwZlZKdUFpY3ZCZU9wcGd3?=
+ =?utf-8?B?a0xBd3lCeVE2QTVBT3NrajVQblU1c01wa0N4NElDM1RCVEJEV1BFNGMvbVRS?=
+ =?utf-8?B?UjNxakRNMjdyblRSZEpYOXUrRDVRcDdWQjJtL3R1YXE3a3pSWTNQRWV3Rngr?=
+ =?utf-8?B?VExUK0x4Z3Mxd3E4WjhWVE1Wb3VpNFgyU2xqOHY4a0ovRUR4TVVCYTdFZ20z?=
+ =?utf-8?B?b2MxcUZFSWtWVHg0NE9SaWZIVjVvN3dHMVd5eEY0WXQzeXh5NzZSYlAyS3g5?=
+ =?utf-8?B?TzZmYmluTy9wR005ME54NjNkamxRT3IwSDZSbHhqeC9Dc3BZbzRVSUc2bUJM?=
+ =?utf-8?B?aEE1Q3hPc3AvazBNN21zSHNLbXpzM1AxSXdJb2cvQTVJTndwMXBhckhkaHBT?=
+ =?utf-8?B?bjdHR2MyWmF2R2JqM1NyRXB5RHl2elozdlJjQlB3d0VzVDJFYWNtOEhVZlpK?=
+ =?utf-8?B?cjVyeUpaWUtiTFZud3NINUJIcU9GbFpycE5ySm9XZ3dpUlBzaVpmWXU5Y3VI?=
+ =?utf-8?B?b1JVQmNYVURjYVBLUk1jTERIbmFEM0c1bU94UHFlbkJEbEVsRGN5cGlBc2Uw?=
+ =?utf-8?B?ZHVsbWg0T0ZOWW1NUmRmT0I1TGJLM05ibW12T0c3MjVLc1cxY2JJczd2elFj?=
+ =?utf-8?B?NVlRTURXR0NoTzVvbllGRkptbENqQjVNQTB1QVo2STEyd3Z0NzN4Z2dsS29B?=
+ =?utf-8?B?cFh2b3ZNMUZsd0lwL2ltT2dSOGpWZ2xYMzZ2V20yNk1sS3hpMWNJQndIT0NW?=
+ =?utf-8?B?bVNLMkZCUjgreVEwYlZZQ0lNUHQyQkErcTNaaEVMYnFWMVBFcDdScXFXL1Bj?=
+ =?utf-8?B?UFVrMGZsT20vMnI4Zld3WFJteFd6cVBJQ0FvZjQyU2FpWmZHbG1VSzFXK29q?=
+ =?utf-8?B?eWRoWWZIMnF6aUo1WE8weURoVjdQTk9ESkxHbzlycW4yUFZNcWY4ZUJuS0Ra?=
+ =?utf-8?B?c1BVWlNEdzc5TjNNQytEYW41SDZOSC9Nb2RXa1crdWpYczJTUXZWZ05iUVRY?=
+ =?utf-8?B?d24zbzZaaFRsQWRwbmRIemRaODAzdjRVRXVFdlM3YjVMNUVSVmQrMUcvQy9y?=
+ =?utf-8?B?TTRMRUJTZzh4N2NwanBneVFTa1lLSzdETkdPczFuT2NFanJRUFhUSHRDQlZX?=
+ =?utf-8?B?alpPSVM1ZWF2SmhDa0VtczE1dU54UG1YQ0orYnFqell3NHpUSnMrd2xXM014?=
+ =?utf-8?B?RERITmFCOWNPLzBBZEtpNEE0d2VGYjhzRnlONmVPZTljcmdVUkFnQi9mZG9K?=
+ =?utf-8?B?c0V0N0tyUm5aRVlsNGVZajg5VmhzZjV2bTkrV0x2YTRIK29qeWRndTkvN1Bj?=
+ =?utf-8?B?L2tTZGRMQXZYcjg0SFM0NUZCUEk0UXdtSTFxWFN6TzVJZEJEeVhWM0E0a25p?=
+ =?utf-8?B?YW9OZjZUK3Q2T09xRGlaN0hsNmZZQSt2K0VzdmpkWG9sbStySVFDeHk2TFBi?=
+ =?utf-8?B?VkFhenFkRTR5RmpNUlFtSEM4UjhWZ2JZdFFaL3JuUklKV2lHMGN2U01uM0tM?=
+ =?utf-8?B?YVlsaTh5dWFwRHBDNHJuSDFQQUQ5QzlxUVl2d0k4eWpKbTNUeTdBbmYreFRE?=
+ =?utf-8?B?QUpkVFVJWUxjUEpWakpSbDNJUzhBTFhxamJFQXRiTURpUWc9PQ==?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR06MB9453.namprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(41320700013)(13003099007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?aGlkakVVb04wMHl0cXdSTFVNd0E1NTUzQjlNQU05U1VPNE5Nb3M0Z2ozQVk1?=
+ =?utf-8?B?bmowWWlCZWwyR1JuZGViWGJWWTBvU3ZSMy9yTHNSNFIyRVBmZmhGZ3ByQlFT?=
+ =?utf-8?B?VmwvRUxacit6eWkwRjk4aXo0NHdTUzdwY1ZvUWV2THFYVXdiOUlEUGJjNVVu?=
+ =?utf-8?B?Z2RjNWpPWkZsQzA3THEvTCsvT0dTaWZHajdrRkhvZ0VJd3hsbW1BcU55RVA5?=
+ =?utf-8?B?NlhBa0pJVFgzUEFPUEdOVlpQbmt6Q3JnRW9SdFNNWlVnMjJ1aEdLbXd6Y1dI?=
+ =?utf-8?B?MWY4Zk14M3ZzVE9NSkFCQ09vdFFrVW1uRmpwY3Fxc2VtZFVBcGE2eVhpTVIw?=
+ =?utf-8?B?dHVhd1gyMVBHUnl4WndLbmFMT2Q0WTkwemRPU3k3ODJZZDMrV0JzTkJvUm9U?=
+ =?utf-8?B?SkIrdFJBYkVaZzlyRnJyQ2psMUgwU0JacFc4aDJUaGpKS2F5anZYOFV4YzJL?=
+ =?utf-8?B?Y2QwYTE1S08rVkU4ekhjK3VFTWMrUmpYOURrT29JS25oUjBsMjA2UmtQOFpx?=
+ =?utf-8?B?YllzekRtV0UzRGlwOVJLUlRCMndHdjA1SG56QW5SdmRpTlB3eFo2b0cwTm9i?=
+ =?utf-8?B?YWpKZTVJb0FLQkdnYzhsWm9QUE9aTm1udEdIcERXVVpUNThWTUpZRUlLT0ll?=
+ =?utf-8?B?UHZmL290OXRwY3FWMDA1aHlGckYrc2QzcncwOXpReGI1QTJnMjAyUjFzQnMv?=
+ =?utf-8?B?dVRnREJFb1h1ekhaekhoV1Y2cjZhYUhvRkNTcGhEL0swS0FYREhuODI1Mk5l?=
+ =?utf-8?B?aHV6N1JOVTdicDg2aklpTWlweE9YbGs3ZEdIckNBYytNK0F3MXY4UzBDUDg1?=
+ =?utf-8?B?a0U5UXlqNE5xU3hocGNDWkRQalpMa0V4YTI0ZjF1ZjJxQmZoWDczV0VrUFZs?=
+ =?utf-8?B?dlNxeHhxTGFoKzJnYVcyY05kWDI1UDJtZ1JDaG81amIzcjJGWWcvRUM1alcr?=
+ =?utf-8?B?VDhab2hYSUlRT05GVmZveVo3eXY1Qy8wa0FqWDNVaHNYQWs5MEtQN0M5cjc1?=
+ =?utf-8?B?UFNia1hJQTN5M0l5bDdYcjU5bGhOQjZuelZ3dGx4NlB3akROTUdkZmNpYmhL?=
+ =?utf-8?B?N2NvM3ZybnBuc3VOTnpvOFJvQU96cXRaWmdQL3JyNXNDUUtzaExVK0xBRVhX?=
+ =?utf-8?B?TXdqZXdJVkVkcmViZ3hZZHRQUWs1MXBPaFBNTHVaQkZsL0pLRFJKa0RGQ3Vs?=
+ =?utf-8?B?V1RRaGdjY3JxcVhBdStTTmtjaGhGdE5UN1FuUzJramwySjJ6Q0J6SXFxaUNp?=
+ =?utf-8?B?RzJzMk8vTTN4WGRKT1R5NjZiR3ZIbWc0Ymt6NFgvUS9JOExiSHpDeDkxL2Vh?=
+ =?utf-8?B?MGZkRnNNMnBzTEVyd2JNbGhVNnFCandhMlZId0ZOelhaTzkwQnJOYloyL2Jm?=
+ =?utf-8?B?ZEJWZ0NkNzlMM0g4UXVuNGtMcFg4dmhOK1ltUmNBd1JBbE5vbmlPclR0dHBp?=
+ =?utf-8?B?QmUvME9qVEhVOU5jSUVlbG9XM0s4bDgrR05WWk9mOVcvb3Evc3FkK2p6RUdz?=
+ =?utf-8?B?Ym9qYzVkZnJLaXNmR0E2d09iNzVqMTMzTys2OTBiUWZsd2FVMU84RkhMbFBn?=
+ =?utf-8?B?YjI5cVhHQW5rYmdpd2l2WGFiR0FnNCtOMjFsREpyOElLd1hHWjhOZ28xekJa?=
+ =?utf-8?B?bktVbTBjV2FPK3JxZkNmU1A4RFgydVF0WlA1aXUrWHRqZEFkcS8vME1qUjRZ?=
+ =?utf-8?B?SEFzcm1kZzNUK0F5NGxENzVVTGt5ellyQ2FGbmJMSlI2bDJUNXZudGxUTFU0?=
+ =?utf-8?B?NzRTM2dWTGZQR1NMdVFSUk1pNlJhNjNISjhFTC94N3F0UU94ZDNmZTRES1BG?=
+ =?utf-8?B?MlQzVm5qQ0MyZHg3YU55UnZiaCtXN0VQZktCczVZWUVSc3c0ekwyMTJpTnQ3?=
+ =?utf-8?B?MXA3N3RHWkdHNGdXUE9UenVtT2FUSUUyVmR5anlxOUdJMWNtdXcxQTVLUHBE?=
+ =?utf-8?B?WmdOTDlMN0dQMENsMFExRzVoZVR2SXFVRzZ4VkRIM0lkcDRtOGlLNVFZSHc4?=
+ =?utf-8?B?R3k1T2lEb3piK011azJCcFloL0VWUmk2Ti9mMGxuRG1WYXMzbjZFVUhZUzhY?=
+ =?utf-8?B?cjNjN2FnSVpJRnZxY2Q5THVseTFYUytBV3NXWmZ0RTVYckljaW5FL0ltNXMv?=
+ =?utf-8?Q?fTzni71lSFLBuMhdSF+likQdO?=
+X-OriginatorOrg: wisc.edu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7c82a670-23fb-45da-d5b9-08de1d6fbc0f
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR06MB9453.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2025 20:04:46.9858
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2ca68321-0eda-4908-88b2-424a8cb4b0f9
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9lmxklUvEe+lYwEO2uBO/g51OblT45Wy0URDOCIEVkmoMTE5gJJy9i2ZYgS/q1/Y
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR06MB6618
+X-Proofpoint-ORIG-GUID: FzVndRWfsSXHz_9mrz2XdLnUlFrSScyq
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA2MDE2MSBTYWx0ZWRfX2xKZJpWrLOU5
+ 9qz5VH2o8psguYKa1f0LLLCifkMU4z2Ii7SLxhHjGsQNq3WoH72Qi05E1FsvUOq8fAIIz412sON
+ grByeE0/W2scCyf9q5RAmmUesTaj27ca2xiZnf5eJuVQl9659842UoChuCuKkRO7wABsGvyWcjm
+ u4WHXe9P35h4bzp3ub/Zoxsk4KzN5NDDK4pre5wl9OrcjdUOydv4ugiJxMQhoFlYUANstqgDePm
+ Q/hLIdscbJJ250Lvztze7ZFqtkEhwqXEzSH8funalosu0NKDWovCP6kfoFqSe5l+lGNLsuR250p
+ 1VRP8qX8MK2qHjtyQNDNi1pzufgBSTls9zb3Lpn7LWJlr7/qNYJQgeQx/a3bxtVR8e0BaKaxwGo
+ j+Yy4VIq76qU10GpBP+iN/wqGAYrMg==
+X-Proofpoint-GUID: FzVndRWfsSXHz_9mrz2XdLnUlFrSScyq
+X-Authority-Analysis: v=2.4 cv=d4r4CBjE c=1 sm=1 tr=0 ts=690cff63 cx=c_pps
+ a=hroH2nosuffgF65CSEropA==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=x7bEGLp0ZPQA:10
+ a=U-hppK1rdbEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8 a=anyJmfQTAAAA:8
+ a=4kGR-Y0bAAAA:8 a=0xSQ10ycAAAA:8 a=W1X59ukD0zpiExNKYoMA:9 a=QEXdDO2ut3YA:10
+ a=raS2KSKlvgMoiaioHfP5:22 a=poXaRoVlC6wW9_mwW8W4:22 a=pHzHmUro8NiASowvMSCR:22
+ a=nt3jZW36AmriUCFCBwmW:22
+X-Wisc_ValidFrom: true
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-06_03,2025-11-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 phishscore=0 malwarescore=0 bulkscore=0 spamscore=0
+ lowpriorityscore=0 clxscore=1015 impostorscore=0 adultscore=0
+ priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2510240000
+ definitions=main-2511060161
+
+Good morning* Team 17,
+
+We're doing Club Radar for the project! :)
+
+I don't like to make decisions on behalf of people... but someone
+had to do something, and if the leader will not do it then I will.
+
+This is also an example pull request, for those who want to discuss
+on the mailing list.  The command used to generate this message is:
+
+$ git request-pull master https://github.com/SDC-Fall-2025/Team-17-Project.=
+git bip/club-radar
+
+See <https://git-scm.com/docs/git-request-pull> for how to use it.
+Note that <end> must be a branch pushed to the remote repository.
+If you check out your forked branch, you may omit it:
+
+$ git switch bip/club-radar
+$ git request-pull master https://github.com/SDC-Fall-2025/Team-17-Project.=
+git
+
+Pull requests made on the list will be cross-referenced as GitHub issues
+and pull requests made on GitHub will be cross-posted as an email message
+with subject [GIT PULL #<pull request number>] <commit name>.
+
+----------------------------------------------------------------
+
+The following changes since commit 34f8beb17e62470222bda610eabc0646d2a366fa=
+:
+
+  flash README.md with more colorful thingies (2025-10-27 15:37:09 -0500)
+
+are available in the Git repository at:
+
+  https://github.com/SDC-Fall-2025/Team-17-Project.git bip/club-radar
+
+for you to fetch changes up to a3dfcac9b8a90ebf0e394864c8e8edc8485e62ee:
+
+  route / page: change to something more meaningful (2025-11-04 12:50:35 -0=
+600)
+
+----------------------------------------------------------------
+
+On Thursday, October 16, we had our first meeting about our team project,
+where we had the first formal discussion regarding the project we want to
+work on as a team. [1]  The consensus among those who attended was a club
+discovery service, dubbed "Club Radar" by me (mostly humorously). [2]
+The official-ish meeting notes were subsequently published by me on the
+morning of October 22 for those who could not attend the meeting.
+
+On Thursday, October 23, I opened a Discord poll in hopes of giving those
+who could not attend a choice to voice their project preference [3]
+(and a chance to propose their projects, which I forgot to add a poll
+option for or state that very clearly... sorry if you had ideas but didn't
+share them because you believed you couldn't propose any more then. :x)
+Among the five participants who voted (excluding me, since I am neutral
+about this XD), both "Club Radar" and "Minecraft with Computer Vision"
+received the maximum number of votes from 3 distinct sets of team members
+(albeit not mutually disjoint since I intentionally made it so that each
+participant can vote on more than one project).
+
+Despite the obvious (in hindsight at least) winner of "Club Radar" out of
+*both* elections, I tactlessly decided that we needed one more *final* in-
+person meeting to settle the tie, once and for all.
+
+By October 29, two weeks have passed since our first meeting, and the
+official team leader did not publish any plans for a second meeting.
+I urged the leader to consider a second meeting, but the leader only
+responded with a When2Meet.  As of me writing this (November 6, 10 AM),
+only 3 members (including me) have filled out their time preference.
+
+On October 31, I informally stated that the project decision will be
+loosely finalized if any member chooses to contribute a non-negligible
+amount of code. [4]  As of me writing this, no one has pushed any code
+to any Branch of Interest-worthy Project (bip/*), despite most members
+having push access to this repository.
+
+By 10 AM on the same day, I myself have contributed a non-negligible
+amount (at least in my consideration) in an effort to deploy the web
+site's backend and frontend components to Vercel (see shortlog below).
+
+On November 4, I informally stated that the project decision will be
+passively finalized if NO member expresses a will that overrides mine.
+[5]
+
+[1]: https://rapidcow.github.io/site-wisc-sdc-fa25-team/meetings/2025-10-16=
+/#project-brainstorm
+[2]: https://rapidcow.github.io/site-wisc-sdc-fa25-team/ideas/club-radar
+[3]: https://rapidcow.github.io/site-wisc-sdc-fa25-team/polls/2025-10-22/pr=
+oject
+[4]: https://discord.com/channels/1428212879026552872/1428212880184184854/1=
+433978645252145243
+[5]: https://discord.com/channels/1428212879026552872/1428212880184184854/1=
+435491953595908177
+
+Today is November 6 and this will be the FORMAL statement that our
+team web site will be this club discovery project dubbed Club Radar.
+
+---
+* By the time I finished writing this and creating a pull request
+on GitHub, setting up my git notes metadata, then proofreading all
+this, it's already almost two hours past noon... I'm still keeping
+the greeting though... because I don't care, none of you are sub-
+scribed to this list, and it WAS morning for ME at least :)
+
+----------------------------------------------------------------
+Ethan Meng (45):
+      init bip/club-radar with `pnpm dlx sv create' and `poetry new'
+      fix the obvious gibberish i wrote
+      move vite into non-devel dependency
+      ask everyone to use Node.js version 22
+      update devel depenency in the pnpm lock file too
+      try vercel.json
+      validate schema
+      move 'src' to 'pkg'
+      move 'app' to 'api'
+      accept request at an actual /api sub-route
+      fall back to deprecated Vercel build
+      update hacking tutorial
+      pnpm-workspace.yaml: add packages to make vercel happy
+      bump pnpm@latest-10 with corepack (as a consequence)
+      naively propagate packageManager?
+      teach hooks/pre-commit to check indexed files, not on-disk files
+      Merge 'add/cat-file' into bip/club-radar
+      t/version.t: check top-level package.json too
+      let top-level pnpm lock vanish
+      api has been failng :(((
+      move requirements.txt out?
+      how about we remove requirements.txt entirely...
+      what about a symlink?
+      the last trick
+      actually remove requirements.txt
+      uv lock
+      maybe explicitly generate a requirements.uv.txt for Vercel to use?
+      alright that's it NOW you've done it
+      doo doo-doo doo-doo.... move that here too
+      fine, i'll rename it to vercel...
+      one more migration (and hopefully the last today)
+      nope lol
+      okay i take that back
+      ?????
+      rollback to almost 4bb0c86f4e1429d93b7ccbaf4a7ec8d4a1ce4042
+      i forgot to use ${UNIX_SEP} completely lol
+      MY/CatFile.pm: be lenient with newer repository versions
+      MY/CatFile.pm: handle read/write errors more correctly
+      rename python package to something generic
+      update HACKING for the last time
+      actually, there *is* more i need to add
+      privacy policy
+      remove web docs link
+      route / layout: inject footer
+      route / page: change to something more meaningful
+
+ .github/README.md                  |   28 +-
+ .gitignore                         |   22 +
+ CHANGES                            |    3 +-
+ HACKING                            |   89 +-
+ api/README.md                      |    3 +
+ api/lib/app/__init__.py            |   24 +
+ api/lib/app/__main__.py            |   12 +
+ api/lib/app/wsgi.py                |    5 +
+ api/poetry.lock                    |  217 +++
+ api/pyproject.toml                 |   19 +
+ api/requirements.txt               |  111 ++
+ api/tests/__init__.py              |    0
+ hooks/LINK.PL                      |   19 +
+ hooks/README                       |    2 +
+ hooks/install                      |   12 +
+ hooks/install.d/pre-commit.install |    1 +
+ hooks/pre-commit                   |    3 +
+ package-lock.json                  |   13 +
+ package.json                       |   29 +
+ pnpm-lock.yaml                     |    9 +
+ pod/.keepme                        |    1 +
+ requirements.txt                   |    1 +
+ scripts/poe2txt.py                 |   75 +
+ t/README                           |    2 +
+ t/corepack.t                       |   22 +
+ t/cpanfile                         |   18 +
+ t/lib/MY/CatFile.pm                |  315 ++++
+ t/lib/MY/Stuff.pm                  |   28 +
+ t/version.js                       |   21 +
+ t/version.t                        |   29 +
+ vercel.json                        |   19 +
+ web/.gitignore                     |   24 +
+ web/.npmrc                         |    1 +
+ web/.prettierignore                |    9 +
+ web/.prettierrc                    |   15 +
+ web/README.md                      |   95 ++
+ web/e2e/demo.test.ts               |    6 +
+ web/eslint.config.js               |   41 +
+ web/package.json                   |   47 +
+ web/playwright.config.ts           |    9 +
+ web/pnpm-lock.yaml                 | 3122 ++++++++++++++++++++++++++++++++=
+++++
+ web/pnpm-workspace.yaml            |    4 +
+ web/src/app.d.ts                   |   13 +
+ web/src/app.html                   |   11 +
+ web/src/demo.spec.ts               |    7 +
+ web/src/lib/assets/favicon.svg     |    1 +
+ web/src/lib/index.ts               |    1 +
+ web/src/routes/+layout.svelte      |   20 +
+ web/src/routes/+page.svelte        |    2 +
+ web/src/routes/page.svelte.spec.ts |   13 +
+ web/static/robots.txt              |    3 +
+ web/svelte.config.js               |   12 +
+ web/tsconfig.json                  |   19 +
+ web/vite.config.ts                 |   35 +
+ web/vitest-setup-client.ts         |    2 +
+ 55 files changed, 4651 insertions(+), 13 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 api/README.md
+ create mode 100644 api/lib/app/__init__.py
+ create mode 100644 api/lib/app/__main__.py
+ create mode 100644 api/lib/app/wsgi.py
+ create mode 100644 api/poetry.lock
+ create mode 100644 api/pyproject.toml
+ create mode 100644 api/requirements.txt
+ create mode 100644 api/tests/__init__.py
+ create mode 100644 hooks/LINK.PL
+ create mode 100644 hooks/README
+ create mode 100755 hooks/install
+ create mode 120000 hooks/install.d/pre-commit.install
+ create mode 100755 hooks/pre-commit
+ create mode 100644 package-lock.json
+ create mode 100644 package.json
+ create mode 100644 pnpm-lock.yaml
+ create mode 100644 pod/.keepme
+ create mode 120000 requirements.txt
+ create mode 100755 scripts/poe2txt.py
+ create mode 100644 t/README
+ create mode 100644 t/corepack.t
+ create mode 100644 t/cpanfile
+ create mode 100644 t/lib/MY/CatFile.pm
+ create mode 100644 t/lib/MY/Stuff.pm
+ create mode 100644 t/version.js
+ create mode 100644 t/version.t
+ create mode 100644 vercel.json
+ create mode 100644 web/.gitignore
+ create mode 100644 web/.npmrc
+ create mode 100644 web/.prettierignore
+ create mode 100644 web/.prettierrc
+ create mode 100644 web/README.md
+ create mode 100644 web/e2e/demo.test.ts
+ create mode 100644 web/eslint.config.js
+ create mode 100644 web/package.json
+ create mode 100644 web/playwright.config.ts
+ create mode 100644 web/pnpm-lock.yaml
+ create mode 100644 web/pnpm-workspace.yaml
+ create mode 100644 web/src/app.d.ts
+ create mode 100644 web/src/app.html
+ create mode 100644 web/src/demo.spec.ts
+ create mode 100644 web/src/lib/assets/favicon.svg
+ create mode 100644 web/src/lib/index.ts
+ create mode 100644 web/src/routes/+layout.svelte
+ create mode 100644 web/src/routes/+page.svelte
+ create mode 100644 web/src/routes/page.svelte.spec.ts
+ create mode 100644 web/static/robots.txt
+ create mode 100644 web/svelte.config.js
+ create mode 100644 web/tsconfig.json
+ create mode 100644 web/vite.config.ts
+ create mode 100644 web/vitest-setup-client.ts
