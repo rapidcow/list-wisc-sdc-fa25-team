@@ -1,0 +1,432 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-3.3 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DMARC_PASS,RCVD_IN_DNSWL_LOW,
+	RCVD_IN_VALIDITY_CERTIFIED,RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,URIBL_DBL_BLOCKED_OPENDNS autolearn=unavailable
+	autolearn_force=no version=4.0.0
+ARC-Seal: i=2; a=rsa-sha256; t=1762547139; cv=pass; d=forwardemail.net;
+ s=default;
+ b=PFh1+0zkKFl4CPM6zaYvlJW0fSaFn/j6PY1TDUpxaY7LvhcX+WoOTcAfE58E2zL7gsekrNW+z
+ ipv5Vxpkvf9WSYRiqtCBI9Bkc2UADVUC50KQGAjl+7xGFztj0FnEdBKHQ09CNvI+fXo67B9wwwk
+ 4zhIgr6/qUvGPF8RC+MFljw=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=MIME-Version: Content-Transfer-Encoding:
+ Content-Type: Subject: To: List-Id: From: Date: In-Reply-To: References:
+ Message-Id; q=dns/txt; s=default; t=1762547139;
+ bh=Svd54DFZ1Zx8mktTO4/OUkdxXZlQS+Uc0vpXJV+oehM=;
+ b=LFiuah4mNWHgw+XNydei/CM1e3fU6PoOUGYO6opDEWHVW2XdVoQ62SHSUJOxw138672qH1neo
+ 2vxF3VleQwKQzLyy2osUdrOpf67mG1jtx+/WZ+3ypC6FB/ysBgLFOrryW0lxKzDaz6DP3lB00RV
+ lnJbm6FOF5DE5Ww0X9YJr1s=
+ARC-Authentication-Results: i=2; mx1.forwardemail.net;
+ dkim=pass header.i=@wisc.edu header.s=pps1 header.a=rsa-sha256 header.b=SXe7mN3C;
+ dkim=pass header.i=@wisc.edu header.s=selector1 header.a=rsa-sha256 header.b=tV7EOOxZ;
+ spf=pass (mx1.forwardemail.net: domain of ethan.meng@wisc.edu designates 205.220.165.71 as permitted sender) smtp.mailfrom=ethan.meng@wisc.edu
+ smtp.helo=mx0a-007b0c01.pphosted.com;
+ arc=pass (i=1 spf=pass dkim=pass dmarc=pass fromdomain=wisc.edu);
+ dmarc=pass (p=QUARANTINE arc=pass) header.from=wisc.edu header.d=wisc.edu;
+ bimi=none
+Received: from mx0a-007b0c01.pphosted.com ([205.220.165.71]
+ mx0a-007b0c01.pphosted.com) by mx1.forwardemail.net (Forward Email) with
+ ESMTPS for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256); Fri, 07 Nov 2025 20:25:37 +0000
+X-Forward-Email-Sender: rfc822; ethan.meng@wisc.edu,
+ mx0a-007b0c01.pphosted.com, 205.220.165.71
+X-Forward-Email-Version: 1.4.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Received: from pps.filterd (m0316037.ppops.net [127.0.0.1])
+	by mx0a-007b0c01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5A7HS56E008046
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Fri, 7 Nov 2025 14:25:36 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; h=
+	content-transfer-encoding:content-type:date:from:in-reply-to
+	:list-id:message-id:mime-version:references:subject:to; s=pps1;
+	 bh=Svd54DFZ1Zx8mktTO4/OUkdxXZlQS+Uc0vpXJV+oehM=; b=SXe7mN3CaMrV
+	3RJ40KkqPN7WY3XiQer27xdjMr1m4VNPOsB8mDaXx1Veq1UtJEvivVfE+rZZhGOF
+	RDevRZpeHkwNMZYte3L3+gn99tVTA9pWjoKVZWbWbBj4W/PZXmebFIRDx6VPSWqE
+	UqQ6dIRutesyn80vasOZE3HY0aLshwpoOe4S3sWzaeSsUsw3VwDh7xnKj7rUHnO0
+	+5jMnBQLQ87W17zx61P7ug2NQgJvsjEp9zzT4f4TQ488q+HY7qJ/R9DR682dgoqC
+	qnijWD1nN7qmcFoJCfYkBs6uAE+jvXWVOcqou705xuwLP2eZol8qk+TsKlrOlhZp
+	FpCOe8d2QA==
+Received: from sa9pr02cu001.outbound.protection.outlook.com (mail-southcentralusazon11013068.outbound.protection.outlook.com [40.93.196.68])
+	by mx0a-007b0c01.pphosted.com (PPS) with ESMTPS id 4a9n6fh9ub-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Fri, 07 Nov 2025 14:25:36 -0600 (CST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ECtkr5TRY17UYU/90Z4WyImP8MrClJz8FfkBYry4WGe2yZe64Lp+z8opA/vo4gijVxycIAHDyoB0tvXwTxSTuoGw14akb933GWoTDbL3A/QMCduCQhUmmozCxJ4/c/IJIhQW22s+6sa3xBpvgdKLg/H5x9GVDXSVaSvjnLB4AfMAd6vkX+MNhtF2xtkEy4Yz5x5MGnQkFNxKzWMIfFvlJvyeD3yo2YEUHIBnJhcyYz0ppfKinXt8qaAxSlgeWJS4Ji/GdFE5rJfS72N/92yVuYO2fW20DoIOW+lRWg4y2JVLI4u2YEWQobcQu1Pt43Dy7wNJ0X+Sm+tkh2GF8xLaAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Svd54DFZ1Zx8mktTO4/OUkdxXZlQS+Uc0vpXJV+oehM=;
+ b=p4yTMZX2vs2cHol7OpWWN1oQwYcBARx7IxqBwH0wCSlOtEnNiIJSLLM4WReBuFxyzsFdfIksIEIX0x1LnPeCDBzV9nDaOLLrC+WoQhK+83OFwMtibBhlDRuu2an4KKxW1zDkW5eA0B2nInmVacioHtJKjcsUvsKP2zar+h+KwY0JufNKo8nHEK1oGjwd3gzMUvEMLBuLNVNoXiuKRUDR91evls4+wsiI3olKkPuvJoF/SPHoZADzP877F1pN1cdzS7xQusVf8skqaDtf2grPleojuiifjMp2rBtal5D6C3Pr3HZy9BaNE5OmqNoaYMuEawFfoQ9MOuZkyElHXqte3w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wisc.edu; dmarc=pass action=none header.from=wisc.edu;
+ dkim=pass header.d=wisc.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Svd54DFZ1Zx8mktTO4/OUkdxXZlQS+Uc0vpXJV+oehM=;
+ b=tV7EOOxZnNQBrqiNaH+oRFGnuQTOVhrHT44Y3gM8pMjxgNveidKCxjSLlZ2eHBwwGQbWMJQ7fOxZwwJ5e09QC5Vn0vW3qjgMSiT3ypGAmkH6O0v+9lpmdz7wC4X5mXWEUOONP9gCbKuPhZUv33q1WfkOz5iZZcRCMYUQ2EEya79ibQAx5Gut/6kUTuWq4xeHdX0C+jaifQg4yRkgJQpb1jcJkNmkyMhUcGeGM000kbs0VJjoC/oT/OgmWQ554Y2EGfoLyrgKir2CtHRGgBf+NO17fhnebyF7ETe7WVfI+fB/PuZInekHl7oowRdeJ1zk+Bn0cVYVN0ejyinNzCouvQ==
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com (2603:10b6:408:19f::14)
+ by CO1PR06MB8121.namprd06.prod.outlook.com (2603:10b6:303:e8::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9298.13; Fri, 7 Nov
+ 2025 20:25:34 +0000
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb]) by LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb%7]) with mapi id 15.20.9298.012; Fri, 7 Nov 2025
+ 20:25:34 +0000
+Message-Id: <1762542597.pull.1.v2+cafa8f4@x.rapidcow.org>
+References: <1762451972.pull.1.v1+a3dfcac@x.rapidcow.org>
+In-Reply-To: <1762451972.pull.1.v1+a3dfcac@x.rapidcow.org>
+Date: Fri, 07 Nov 2025 14:25:15 -0600
+From: Ethan Meng <ethan.meng@wisc.edu>
+List-Id: <wisc-sdc-fa25-team@list.rapidcow.org>
+To: wisc-sdc-fa25-team@list.rapidcow.org
+Subject: [GIT PULL #1 v2] PROJECT DECISION! Club Radar and boiletplate friends
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: CH2PR05CA0009.namprd05.prod.outlook.com (2603:10b6:610::22)
+ To LV3PR06MB9453.namprd06.prod.outlook.com (2603:10b6:408:19f::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR06MB9453:EE_|CO1PR06MB8121:EE_
+X-MS-Office365-Filtering-Correlation-Id: 33a41201-cd75-44f0-2356-08de1e3bcdb5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|41320700013|376014;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?amppYk9oZHVyTHpaM2thZTdIN0FES294bW5DM3NWdi9hTVdCamtRY3AzRVFZ?=
+ =?utf-8?B?RmxQNTg1TXIvaVNEMHk5YlUySHR4Z3NEM29ORlBWTW05RmdGOE1GK3dCRFd4?=
+ =?utf-8?B?Q0IxWmtrQWY3UHVPZ1lkWCtQRDB3dlRmekJLS0JQbnFhREx2WGNWUkJGRGho?=
+ =?utf-8?B?VmxkVnRUVUZYN2c5RFY1WCtCaUNKeHdFMTlKTkp4dC9qeTJGa2w4dkIzRXd3?=
+ =?utf-8?B?S3F0OWJIbjloaGM3SmllK1kwY0Rsb1EzSkQ1c2c5ZUFobzdFNFp2WVpldFlC?=
+ =?utf-8?B?YW5ZMnBJb0V0U0N5TU5LL05kUXVTdGZrN2hBMGtmSDBnNHdFSjJ5RUtMWDBF?=
+ =?utf-8?B?dlg5TkRtYlJrR1c3Qkp0cFowS0U2V2MweW9UK3NBalhDWFd3THl3R1ZVTFBG?=
+ =?utf-8?B?WkNjbWNUYmNlTG83T2dOdnZEY1B3UHY2cFdaWEp2bVBISGlYblNBOVNwNyta?=
+ =?utf-8?B?MXgzVENDVk9ieWFoZEx0NjJIYVZCZE1XZXVUU3BKUWRnelZDWnRiNkxqMURU?=
+ =?utf-8?B?NDRubEkxRHUrbis2OUpGbkk4QTg5bHNwKytzelhaUUx6YncwZjgvNmM3VmF4?=
+ =?utf-8?B?VEVIQ1lTODMyQ3Yvd0VxRjl6a0ZjVzlZZnpSMzZHa1pXem9PYUU0ZlNOZmd4?=
+ =?utf-8?B?VDBPWXhpZ1BQRHZDSGhBSm5TM3gvenBVbVhVMlkvK3BpSkRTQlVoRnNIdG9H?=
+ =?utf-8?B?cklTZi9OMW81V0F5K05UQlJkcUsxM0lRWEN2ajZsR1RRakQ2YkFEb3ZZT2pB?=
+ =?utf-8?B?QW5aZXFtUTZzN1VYc3JGeDdSUnE0SW5kZm1LT3ozUFZOU1RTV1FFSTBDRzJk?=
+ =?utf-8?B?VFBRUFpmZEE1VzUwU3NzakVEcGphS1ViMUZDanJoVmpFRDF1YmUxY09GZzNJ?=
+ =?utf-8?B?THczcFR2RlRzNUl5YktBZ2wxVHZQaFZCQ1hEMTY4VHBSbHhuWTlJUXBnR1Bk?=
+ =?utf-8?B?dmVYQWpJa1dVZis2ZDVybkNhc25CTTBSVFEyNi8yRzZadk1aaEJYdmF0L01s?=
+ =?utf-8?B?aGFIeEJqZkh1SWdrSER6NnNPQ1ZNRGVDYWo2c3p5a2k4RjJpK2xZZU55TjZO?=
+ =?utf-8?B?b2hPbWJuSkhISHpoVFo1UHhSRkRUSFlmRll0WHREQ0xzL1BLUDRyVzFFYnBK?=
+ =?utf-8?B?UjJMQ2d4WkNNUzRpUzJCcHRNL1BWckE3SFVUK003dTc0Sm4wL3AwVFF3cWJ0?=
+ =?utf-8?B?K3lWSEM3UWd6cXZFd1NDVnVjdy9wMVpiQzE5MmpweUpBNE9qbnpGSmpFVkxn?=
+ =?utf-8?B?OGZZa1JlU2RycnhpekNFeWZmTVBHRHQ4TkxlRmdPc0NoZFRPWVpCZ2NHTDRF?=
+ =?utf-8?B?Mkp0aTlSVTZsMzhxYzNpNjJ3Z3pFN21ZNGhUdnYzUzhLZHNQdzRzbVNjOFgw?=
+ =?utf-8?B?UFVyU2luVThEYWNWZllaQkRHNjVaZld4MWhoMlk2U2c4RGozT3Y2RldPd2k1?=
+ =?utf-8?B?NjU3UkQxY2tWdUs0QUZ0SEplTUlDTWV2cjhSZWhZRFJlYXhOS09tZDRvSzd5?=
+ =?utf-8?B?dXBCS0M1L3Z4RDlzc0R6YkZIbWdSRThaK0kycTlad3I5eXlZUThoL3Z4SUZ6?=
+ =?utf-8?B?WUdWZnl3UWVtdG1OUXdMdEROMjUwZG9ueEhmZjErK0JqQUlKeVA1d2dCVi9z?=
+ =?utf-8?B?RE5DcHJSMStES1JQb1djMTE4UHFZTUsyQ2ozV0ZheTlicGpGRHlKQXpNOVEr?=
+ =?utf-8?B?N0tIQ0R5NWFRcm45NU5SeGpoN1Zpa2ZjWldFWUlVQnJDdjlVdUhhdWpwbndB?=
+ =?utf-8?B?dUh6R2p1bjkrVkpCemZnMGZLSzBiYk9xS05jNlh3aVhnaE8yNEpZN2ZQYTBr?=
+ =?utf-8?B?VkszM1ZQYklpTjZ4cmVnR1Y2VlpBMFJiVkFZZHNzY25lcjVyY2NTbURZek5p?=
+ =?utf-8?B?ak9mZ1MxV0UwS0M1Yit2czJFNmNvb1RObUt6cG1hclJXc0VLSk9ZR3NrWmlX?=
+ =?utf-8?Q?nfmAfp3hE+MgF1kabCy5Xc6uMw7Gj89K?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR06MB9453.namprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(41320700013)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?bTNSM3d5UUJQYUZFRS9wSGNSY3RSeDltZTJySlJ6NFlocWxmd3ZBNldDbGVG?=
+ =?utf-8?B?SExSYU1RMFFGYjdzaFlMdmMyb2lMbzlZQy93aS9vb3ZLM2diaVpCNWk3U3pK?=
+ =?utf-8?B?R1NpTGx0Z2tHQVFRK09CaTJBZFVFSzNnZ1pZUys1aHRLR3o3QnRwZkxMUisy?=
+ =?utf-8?B?YnFXMWptQW5KSXNxNmN5ZXh1aElnVEdZOWl5QUVEa1VGY2Vrc3o5SHRGOXlE?=
+ =?utf-8?B?T2FLaElZOWYwSjBkdHJDSGZ3RVZPMVI1aEdrZGgyRTJyOEh1Z1FpMXR1SUtj?=
+ =?utf-8?B?RHR6ODh5OTZieE5xcVdzdmNuY1VhcEhMaGhGZGw1S1FQdXAwT29RbkhRVldX?=
+ =?utf-8?B?WTk1amRkMkMrR2xtUEZFSWdXbjhsNkJDTjlMRXlIL2JIcXgvQzhTN1VvOUxU?=
+ =?utf-8?B?MmJ1SXBIVVZaSXBZK0txRjRYYVMvNDhUVFdETkZ5NUxRbWY5ZTU5TCtJVjZ0?=
+ =?utf-8?B?UFpyK0ZGZjB5WVJac0FkNzl1V1dWVW1uak9pL2tCdTlvUzVhLzdxa1E4RENt?=
+ =?utf-8?B?NldaT2tLMUtLT2ttc1Q2d3hYRzUxVzJLZDA0U1crMWZTaFppMllhMlN5Nms1?=
+ =?utf-8?B?dTVSY3hMTU1OMHREVGRuN0lZTU85OTdNaHlKZDhUbm5Zb2tqODIyNEhuNHhr?=
+ =?utf-8?B?TWhnWWg5bk9PaTRaUjBic1lIRUlxcVRLUGRGSy9DZ0VxeDkvTzF1MmVrV09H?=
+ =?utf-8?B?S2YxR2paWlk0cGVhM04yaGZwS0hFUTJQVG4rcW5GbHlBVThlVk40Y2thZWhG?=
+ =?utf-8?B?RThJVkRxbHlBb3lVQjNtUVU5dkNjREtYbzVGZVdJWEZ3V1IveDJVd3N5Uzlo?=
+ =?utf-8?B?ZUlGdnpESGFoWGRrbElxZCtoRk9KcmNFV1c2MjloQ3oydm81MWt2OExsKzJ5?=
+ =?utf-8?B?NlZ4MkVwc0pUcitXUVNIUkNMSmRLaC9Yb1N4TC9Yd0J4NTU3WHg0TnE5YVhv?=
+ =?utf-8?B?N0cvNDU4N2szTzE1d1NDelVGRUZ2NTZPTnBNNnlyTjBKTDQ5UkFpRGJQWGtk?=
+ =?utf-8?B?SmljUS8wN0FFc25zb2dycUUzaXROODhubGc2bUhTZ0pNVlU4R0krWDgrQzR4?=
+ =?utf-8?B?MlQrT2k2N0V0a2ErbnlYNURmNmhwakYwanNqZE9aNTA2ZWltbzJOR2xvamRH?=
+ =?utf-8?B?Vm1uL3RsNm9iQU5Fa3JFYzN0WjYxQUxWVmlra0RjS2ova2ZOR2N5RmU3QUZw?=
+ =?utf-8?B?dG1iSklxS2hYV1VEZjU1cmlBc2MzS0dyL2ZYUkhjOHovYXdydWhFVzg4OVRG?=
+ =?utf-8?B?QnZreVVJVnNKZTdsOExNUmFOZEppaVFuemdYejg1SWM1LzYraEsrSGxYWVM1?=
+ =?utf-8?B?RDM3UnMvMTdaMGNnOTFFdUtuNTQzdFozYS9XTUhybGU2MmIxbVhpelhrK3lX?=
+ =?utf-8?B?Zmp3bzdwRWNkakpJWG9OOVNIeHBuODIvSlRvMjRaVmlVMDN3YlRYTlNWM3JU?=
+ =?utf-8?B?Zk5UbEl1MGpMeUo3eEdkM09YWTByQWhsdWJjelJXeWFtdndEZHUyUGUvNUQ3?=
+ =?utf-8?B?UWFEUXRwVTNsZlkzenUrZlFNaEJuZXdiUzFxYWRueDRuN3NvQTQxazhseHM1?=
+ =?utf-8?B?cTNIQ1ZGMjZlRXhpaWpaSUZGZHJPcEl2UE5nd014cWl0S1pjZzR1ZmVPRllZ?=
+ =?utf-8?B?STkwSWN6TmhDTGkzQW1PL2RsZTdOVXdmSTU1MXA0Y3c4b2cwMEJYd00xMmRB?=
+ =?utf-8?B?by8waXJjWFRYcGtFcWd0aDlXcmloWEhFVUpmYXl3NldlcTF5ZEl5ZkZWalB2?=
+ =?utf-8?B?SnVuUFViZ2pkUmhLZXdyUzNONXhWb0ZQTVVJdDRJM0Y0RXp6UEdqcWJzcm03?=
+ =?utf-8?B?Vy82U0FYRGYrU3FoTmpZUkltZ1lPY2lXaUswSlV4VjdETEVGd1hyd3Z5R3k3?=
+ =?utf-8?B?dWZtdjlWR2hNTzNWTWgxQ1RJUWkzYTBSNkwreXZtdnkzY25PTVdIZ0pEL3dM?=
+ =?utf-8?B?bWg4dkM0ZDFXWnBhSmZVaWtJMVQxNTFLNHRMamVGRjdOQ3daWmdJY29ydk94?=
+ =?utf-8?B?dHJkbVkyamNZdU5hZmFvS0tybHhraEx5T2lPVnJwcGxxMEhDSk11SkZJcjd3?=
+ =?utf-8?B?OGJlTjJ2eFlrOE8yaEhKNWFmdHFRcit2anNTS2o1Y1l0dW1nbGo4bE9LSGln?=
+ =?utf-8?Q?JrwocGffdh6WipeAxDs94O0Bb?=
+X-OriginatorOrg: wisc.edu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 33a41201-cd75-44f0-2356-08de1e3bcdb5
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR06MB9453.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Nov 2025 20:25:33.8001
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2ca68321-0eda-4908-88b2-424a8cb4b0f9
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qw0hlXCLg+Vo4GQCGshUJ6N566tPp2CZabSsydjp3imXW2Xb1tL42jrKHEEMnZ0P
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR06MB8121
+X-Proofpoint-GUID: czWIo5cTD5o9T9bzNDSmg3iXoJWMOoC7
+X-Authority-Analysis: v=2.4 cv=NvXcssdJ c=1 sm=1 tr=0 ts=690e55c0 cx=c_pps
+ a=0JRlrhwbVVPmsaj0kffiDg==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=x7bEGLp0ZPQA:10
+ a=U-hppK1rdbEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8
+ a=y0HisefqtKct0PlEt6wA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA3MDE0NCBTYWx0ZWRfX6po+DAZF2CUL
+ O9kMKFpz6PwUUxVhCgSYATeJijB2ZO9qgkvthx1UVtEt+wonOsXcry7vyKeKbhP3P1ofCmJ5YgG
+ xYMZ0yDAgj7/VVxzqld4pNE/H1Pb6UhC3Gv9dJ0LdJU2TCwVt34PPTA3NM4BiaA/weNXXgnGOue
+ ffsiigot1Fh7x6pAdh1KP2OyMbgCqUKx680b3vn4ou+4EJTHgoq2apCsTjOS1aM61TrLNla71KB
+ 2oX9/Id/je64yHuMnM9t1D7nQsBtTuOBAFFmyREmugyL175eOiuyAtsYPIvIDPwqfbOS5JfCMRQ
+ ieIaalVI3MBV6ElYAupXWjZDo5+t3lk5CDV3dNu48cgsyAZpY2M8st1VHHa6ng8BEEfFD3eCcEz
+ gOsAUpJFCW90i0xBrqmOVNefDDt+GQ==
+X-Proofpoint-ORIG-GUID: czWIo5cTD5o9T9bzNDSmg3iXoJWMOoC7
+X-Wisc_ValidFrom: true
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-07_06,2025-11-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 suspectscore=0 spamscore=0 adultscore=0 priorityscore=1501
+ phishscore=0 impostorscore=0 malwarescore=0 lowpriorityscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510240000 definitions=main-2511070144
+
+A quick revision in a few places before this gets finalized...
+
+I will move README.md out after .github/README.md... but only after
+this gets merged since the diff --cc output would be too confusing.
+
+$ git push github @
+Enumerating objects: 31, done.
+Counting objects: 100% (31/31), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (26/26), done.
+Writing objects: 100% (26/26), 8.79 KiB | 1.76 MiB/s, done.
+Total 26 (delta 16), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (16/16), completed with 3 local objects.
+To github.com:SDC-Fall-2025/Team-17-Project.git
+   a3dfcac..cafa8f4  HEAD -> bip/club-radar
+
+Range-diff against v1:
+$ git range-diff master..github/bip/club-radar master..bip/club-radar
+ 1:  176dd72 =3D  1:  176dd72 init bip/club-radar with `pnpm dlx sv create'=
+ and `poetry new'
+(42 more identical commits)
+44:  a3dfcac =3D 44:  a3dfcac route / page: change to something more meanin=
+gful
+ -:  ------- > 45:  7234f7d git hooks installer: do not hard-code pre-commi=
+t anywhere
+ -:  ------- > 46:  3d7622a pedantic correction in that exec is not one sys=
+call
+ -:  ------- > 47:  c94259a absurdly more gitignore rules
+ -:  ------- > 48:  5b2279b it's $GIT_DIR with an underscore
+ -:  ------- > 49:  208664f maybe not core dump, actually
+ -:  ------- > 50:  fba3b47 ignore node_modules everywhere
+ -:  ------- > 51:  2daff96 gitignore pnpm store as well
+ -:  ------- > 52:  cafa8f4 add even more exhaustive Mac OS + Windows ignor=
+es
+
+Diff-stat:
+$ env COLUMNS=3D76 git diff --stat github/bip/club-radar bip/club-radar
+ .gitignore    | 207 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ hooks/LINK.PL |   4 +-
+ hooks/install |   2 +-
+ 3 files changed, 209 insertions(+), 4 deletions(-)
+
+----------------------------------------------------------------
+
+The following changes since commit 34f8beb17e62470222bda610eabc0646d2a366fa=
+:
+
+  flash README.md with more colorful thingies (2025-10-27 15:37:09 -0500)
+
+are available in the Git repository at:
+
+  https://github.com/SDC-Fall-2025/Team-17-Project.git bip/club-radar
+
+for you to fetch changes up to cafa8f4849cb6ee1763138254ee5f203a30955c5:
+
+  add even more exhaustive Mac OS + Windows ignores (2025-11-07 13:02:56 -0=
+600)
+
+----------------------------------------------------------------
+Ethan Meng (53):
+      init bip/club-radar with `pnpm dlx sv create' and `poetry new'
+      fix the obvious gibberish i wrote
+      move vite into non-devel dependency
+      ask everyone to use Node.js version 22
+      update devel depenency in the pnpm lock file too
+      try vercel.json
+      validate schema
+      move 'src' to 'pkg'
+      move 'app' to 'api'
+      accept request at an actual /api sub-route
+      fall back to deprecated Vercel build
+      update hacking tutorial
+      pnpm-workspace.yaml: add packages to make vercel happy
+      bump pnpm@latest-10 with corepack (as a consequence)
+      naively propagate packageManager?
+      teach hooks/pre-commit to check indexed files, not on-disk files
+      Merge 'add/cat-file' into bip/club-radar
+      t/version.t: check top-level package.json too
+      let top-level pnpm lock vanish
+      api has been failng :(((
+      move requirements.txt out?
+      how about we remove requirements.txt entirely...
+      what about a symlink?
+      the last trick
+      actually remove requirements.txt
+      uv lock
+      maybe explicitly generate a requirements.uv.txt for Vercel to use?
+      alright that's it NOW you've done it
+      doo doo-doo doo-doo.... move that here too
+      fine, i'll rename it to vercel...
+      one more migration (and hopefully the last today)
+      nope lol
+      okay i take that back
+      ?????
+      rollback to almost 4bb0c86f4e1429d93b7ccbaf4a7ec8d4a1ce4042
+      i forgot to use ${UNIX_SEP} completely lol
+      MY/CatFile.pm: be lenient with newer repository versions
+      MY/CatFile.pm: handle read/write errors more correctly
+      rename python package to something generic
+      update HACKING for the last time
+      actually, there *is* more i need to add
+      privacy policy
+      remove web docs link
+      route / layout: inject footer
+      route / page: change to something more meaningful
+      git hooks installer: do not hard-code pre-commit anywhere
+      pedantic correction in that exec is not one syscall
+      absurdly more gitignore rules
+      it's $GIT_DIR with an underscore
+      maybe not core dump, actually
+      ignore node_modules everywhere
+      gitignore pnpm store as well
+      add even more exhaustive Mac OS + Windows ignores
+
+ .github/README.md                  |   28 +-
+ .gitignore                         |  227 +++
+ CHANGES                            |    3 +-
+ HACKING                            |   89 +-
+ api/README.md                      |    3 +
+ api/lib/app/__init__.py            |   24 +
+ api/lib/app/__main__.py            |   12 +
+ api/lib/app/wsgi.py                |    5 +
+ api/poetry.lock                    |  217 +++
+ api/pyproject.toml                 |   19 +
+ api/requirements.txt               |  111 ++
+ api/tests/__init__.py              |    0
+ hooks/LINK.PL                      |   19 +
+ hooks/README                       |    2 +
+ hooks/install                      |   12 +
+ hooks/install.d/pre-commit.install |    1 +
+ hooks/pre-commit                   |    3 +
+ package-lock.json                  |   13 +
+ package.json                       |   29 +
+ pnpm-lock.yaml                     |    9 +
+ pod/.keepme                        |    1 +
+ requirements.txt                   |    1 +
+ scripts/poe2txt.py                 |   75 +
+ t/README                           |    2 +
+ t/corepack.t                       |   22 +
+ t/cpanfile                         |   18 +
+ t/lib/MY/CatFile.pm                |  315 ++++
+ t/lib/MY/Stuff.pm                  |   28 +
+ t/version.js                       |   21 +
+ t/version.t                        |   29 +
+ vercel.json                        |   19 +
+ web/.gitignore                     |   24 +
+ web/.npmrc                         |    1 +
+ web/.prettierignore                |    9 +
+ web/.prettierrc                    |   15 +
+ web/README.md                      |   95 ++
+ web/e2e/demo.test.ts               |    6 +
+ web/eslint.config.js               |   41 +
+ web/package.json                   |   47 +
+ web/playwright.config.ts           |    9 +
+ web/pnpm-lock.yaml                 | 3122 ++++++++++++++++++++++++++++++++=
+++++
+ web/pnpm-workspace.yaml            |    4 +
+ web/src/app.d.ts                   |   13 +
+ web/src/app.html                   |   11 +
+ web/src/demo.spec.ts               |    7 +
+ web/src/lib/assets/favicon.svg     |    1 +
+ web/src/lib/index.ts               |    1 +
+ web/src/routes/+layout.svelte      |   20 +
+ web/src/routes/+page.svelte        |    2 +
+ web/src/routes/page.svelte.spec.ts |   13 +
+ web/static/robots.txt              |    3 +
+ web/svelte.config.js               |   12 +
+ web/tsconfig.json                  |   19 +
+ web/vite.config.ts                 |   35 +
+ web/vitest-setup-client.ts         |    2 +
+ 55 files changed, 4856 insertions(+), 13 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 api/README.md
+ create mode 100644 api/lib/app/__init__.py
+ create mode 100644 api/lib/app/__main__.py
+ create mode 100644 api/lib/app/wsgi.py
+ create mode 100644 api/poetry.lock
+ create mode 100644 api/pyproject.toml
+ create mode 100644 api/requirements.txt
+ create mode 100644 api/tests/__init__.py
+ create mode 100644 hooks/LINK.PL
+ create mode 100644 hooks/README
+ create mode 100755 hooks/install
+ create mode 120000 hooks/install.d/pre-commit.install
+ create mode 100755 hooks/pre-commit
+ create mode 100644 package-lock.json
+ create mode 100644 package.json
+ create mode 100644 pnpm-lock.yaml
+ create mode 100644 pod/.keepme
+ create mode 120000 requirements.txt
+ create mode 100755 scripts/poe2txt.py
+ create mode 100644 t/README
+ create mode 100644 t/corepack.t
+ create mode 100644 t/cpanfile
+ create mode 100644 t/lib/MY/CatFile.pm
+ create mode 100644 t/lib/MY/Stuff.pm
+ create mode 100644 t/version.js
+ create mode 100644 t/version.t
+ create mode 100644 vercel.json
+ create mode 100644 web/.gitignore
+ create mode 100644 web/.npmrc
+ create mode 100644 web/.prettierignore
+ create mode 100644 web/.prettierrc
+ create mode 100644 web/README.md
+ create mode 100644 web/e2e/demo.test.ts
+ create mode 100644 web/eslint.config.js
+ create mode 100644 web/package.json
+ create mode 100644 web/playwright.config.ts
+ create mode 100644 web/pnpm-lock.yaml
+ create mode 100644 web/pnpm-workspace.yaml
+ create mode 100644 web/src/app.d.ts
+ create mode 100644 web/src/app.html
+ create mode 100644 web/src/demo.spec.ts
+ create mode 100644 web/src/lib/assets/favicon.svg
+ create mode 100644 web/src/lib/index.ts
+ create mode 100644 web/src/routes/+layout.svelte
+ create mode 100644 web/src/routes/+page.svelte
+ create mode 100644 web/src/routes/page.svelte.spec.ts
+ create mode 100644 web/static/robots.txt
+ create mode 100644 web/svelte.config.js
+ create mode 100644 web/tsconfig.json
+ create mode 100644 web/vite.config.ts
+ create mode 100644 web/vitest-setup-client.ts
