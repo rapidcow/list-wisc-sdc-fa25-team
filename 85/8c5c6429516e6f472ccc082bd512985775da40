@@ -1,0 +1,265 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-3.3 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DMARC_PASS,RCVD_IN_DNSWL_LOW,
+	RCVD_IN_VALIDITY_CERTIFIED,RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,URIBL_DBL_BLOCKED_OPENDNS autolearn=ham
+	autolearn_force=no version=4.0.0
+ARC-Seal: i=2; a=rsa-sha256; t=1762559913; cv=pass; d=forwardemail.net;
+ s=default;
+ b=P+RLb6pQpvc2VjmXStIZkX9u3oYpdFawjEGKzHJo82ordKy0A3rlVur5pSxQskKh0XGfV47Ej
+ vijtd0SSW4wt4ESYLWbfA5mgLt0g4mRUArMeMvlJLGp6Aj1TZKeA4etsHUOkqUUqPFr4yjEHKRv
+ riAAbpnGGYzHQkUwCMw1s5k=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=MIME-Version: Content-Transfer-Encoding:
+ Content-Type: Subject: To: List-Id: From: Date: In-Reply-To: References:
+ Message-Id; q=dns/txt; s=default; t=1762559913;
+ bh=fG6b3ghlXy5eSvn8Wt0se5qyplWA6UfDRc5ctJ6cbTo=;
+ b=PJS79LiL9pQdN6ANDNpoyqDv+iL7nuPuyo+25LKwnLrvY/uE3LEwIlMj5/rzJY4Br977KBnkF
+ EIExFcrubV22DDq3hqKt8DTEkKA38uwSGp0dSV/xxypYi60XKIhAvI80FX2x0l3OVlQBgEUfqYa
+ uRqvYegapZHAkwneYFnHb5Q=
+ARC-Authentication-Results: i=2; mx2.forwardemail.net;
+ dkim=pass header.i=@wisc.edu header.s=pps1 header.a=rsa-sha256 header.b=6FVXU6Kd;
+ dkim=pass header.i=@wisc.edu header.s=selector1 header.a=rsa-sha256 header.b=VK2MRvOs;
+ spf=pass (mx2.forwardemail.net: domain of ethan.meng@wisc.edu designates 205.220.165.71 as permitted sender) smtp.mailfrom=ethan.meng@wisc.edu
+ smtp.helo=mx0a-007b0c01.pphosted.com;
+ arc=pass (i=1 spf=pass dkim=pass dmarc=pass fromdomain=wisc.edu);
+ dmarc=pass (p=QUARANTINE arc=pass) header.from=wisc.edu header.d=wisc.edu;
+ bimi=none
+Received: from mx0a-007b0c01.pphosted.com ([205.220.165.71]
+ mx0a-007b0c01.pphosted.com) by mx2.forwardemail.net (Forward Email) with
+ ESMTPS for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256); Fri, 07 Nov 2025 23:58:31 +0000
+X-Forward-Email-Sender: rfc822; ethan.meng@wisc.edu,
+ mx0a-007b0c01.pphosted.com, 205.220.165.71
+X-Forward-Email-Version: 1.4.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Received: from pps.filterd (m0316039.ppops.net [127.0.0.1])
+	by mx0a-007b0c01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5A7Lejj7030083
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Fri, 7 Nov 2025 17:58:31 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; h=
+	content-transfer-encoding:content-type:date:from:in-reply-to
+	:list-id:message-id:mime-version:references:subject:to; s=pps1;
+	 bh=fG6b3ghlXy5eSvn8Wt0se5qyplWA6UfDRc5ctJ6cbTo=; b=6FVXU6Kdcnui
+	CK0clPbe+0oM8PUAfvezl9/EAhJZ8xpOIEruV5qZfLvJ85aU3u7lCZn1NN1vF2dI
+	OiPqWjzKhiLtXbcWG2Ou+nHkKoWildWq569VAVslbUdeLIka1Gxu2WX7qKIiWnVc
+	qVIwU4RYVTixGlHkSQjWGAMNsZQX1IMGioTcMFJEkOhvNFwA0Ax1TszyM+kO9RiD
+	s1M6WPMEBcWVTKlz1OeNBBdRUhKQ/KVqPdbwkt+aorQG4AN8egMBhpHg/Idi7RB0
+	RUQ/Il8naAcWJR38/Sg/X+Ed2D9iKC8jy/S0ERQiIl7BZF7i33fjlUWTqBlFCHfm
+	+D9U6Xhp+A==
+Received: from bn1pr04cu002.outbound.protection.outlook.com (mail-eastus2azon11010006.outbound.protection.outlook.com [52.101.56.6])
+	by mx0a-007b0c01.pphosted.com (PPS) with ESMTPS id 4a9rw0rnya-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Fri, 07 Nov 2025 17:58:30 -0600 (CST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=JBJOpgYT5ns9XfE6Mt5gu7evYg0TGOeD0l46DR6b06xE7FDtns3quhHDgfHweqiPPrL0T3XtcJpic6Y+FzAW9O74nYiawiaS5NYlt90RfLz8oJUlGHQx0rhmm4MCmTKapkOLGAIo1wXTtqIrwyZaThByPAbrfucdudEDRRsRF8KnK2ULIgF3wMB13Ef9cWDp47f6MMQOslh8jeNGjWyjZduvJyV7RBnBSEY5nA6T9pEy9RZb5rrcuxQFzxoQ8VTOXUv7N/1OeTxuzswvFI88MdXyai83PMoIO+bSeZcu2vGl48dF6EvCVyQ2xBQYdFffK8HfD1DzJIyKA73OOsXZTg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fG6b3ghlXy5eSvn8Wt0se5qyplWA6UfDRc5ctJ6cbTo=;
+ b=FBDJTpFiwapapbxdD1bVrIp/pG9lLm3ivNEL6HN4E33wXhR87iUedMw/xIsbcjZteMCpiDjz+IdsksIjWTfQ1WNYUbUQU4zHS5znRPpa89JtKAs0nhaP7Eec/1WxISGnKLITxsHWiJ6o39P3BuptANNxAZ8QguyXznCs8f/4KQ1uHsQ+8QysdO9248nzIUBKgnvJ3nnxC1z6ibstREvDMNsbh+E0mj/G/j8cXJhj4JU8SHQhRSbZTet0q37N2ziXaphspCKBLVeDF1UPSXSYSvE3/B6Kxyocimi4nt7sK2MYkntgfh2vTa6PuJ2Cxrn9eOk9gvzDQQDzjqwXVweLrg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wisc.edu; dmarc=pass action=none header.from=wisc.edu;
+ dkim=pass header.d=wisc.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fG6b3ghlXy5eSvn8Wt0se5qyplWA6UfDRc5ctJ6cbTo=;
+ b=VK2MRvOsqyJy9SHX7QIicmdsAwlpHdZeU7LW1Dz95VutHUdBfSg9To+/wBgZYFR2yMiN9PtEMeM1utQtz8H32Tqazk/NxLbJc0moAGTORKfF/wmOiQxFhJDh20lDaER/p6/qeScuye+BlygPhag/oxl1sN1ZvqqtmZX98e2nHYq0ZhUZgU7CpN9a87mXShYr6oYTKAfyyKN21qBQwaqJCRunN1fm/M2QCVWWY+0EkqVDhRudFM15ZKgAHsOjhUZl/TXohiPRLsMoBeWjjtpcRsjHpiJLp6aTWKpTCSSilK8CQsc6fWU79wNeevoge5TRa7BJe3ehbUhW68dCqbJLuw==
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com (2603:10b6:408:19f::14)
+ by LV3PR06MB9884.namprd06.prod.outlook.com (2603:10b6:408:237::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9298.13; Fri, 7 Nov
+ 2025 23:58:23 +0000
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb]) by LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb%7]) with mapi id 15.20.9298.012; Fri, 7 Nov 2025
+ 23:58:23 +0000
+Message-Id: <1762559897.1834398.dEB4FDD95570C@e.rapidcow.org>
+References: <1762451972.pull.1.v1+a3dfcac@x.rapidcow.org>
+ <1762542597.pull.1.v2+cafa8f4@x.rapidcow.org>
+In-Reply-To: <1762542597.pull.1.v2+cafa8f4@x.rapidcow.org>
+Date: Fri, 07 Nov 2025 17:58:17 -0600
+From: Ethan Meng <ethan.meng@wisc.edu>
+List-Id: <wisc-sdc-fa25-team@list.rapidcow.org>
+To: wisc-sdc-fa25-team@list.rapidcow.org
+Subject:
+ Re: [GIT PULL #1 v2] PROJECT DECISION! Club Radar and boiletplate friends
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: CH2PR04CA0026.namprd04.prod.outlook.com
+ (2603:10b6:610:52::36) To LV3PR06MB9453.namprd06.prod.outlook.com
+ (2603:10b6:408:19f::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR06MB9453:EE_|LV3PR06MB9884:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6e9b93c8-7a76-4b8c-6ebf-08de1e598893
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam:
+	BCL:0;ARA:13230040|366016|1800799024|41320700013|376014|7053199007;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?ZHdKdVdkQkQ2bVY4OXVRN2lvZE9ER0RHU2NFLzEzbmswQU51VktpZzliTHRP?=
+ =?utf-8?B?V2hTTHA2eDIraDUwRmlCejZ5a0lza0d4b1cyVjVISW5QaU5hcWprbmtWSnBW?=
+ =?utf-8?B?UHp3aUhyMGUyUk5scjlXN1RSOUJRRkpEK1hOdEhNMWk4c3dTbEtOdXBYK1hq?=
+ =?utf-8?B?MWVlL1lVYUpZZDllTnJoS1JZV0tRQUp2MDJsVTBQUStEbUFJeHAydzZuT3pO?=
+ =?utf-8?B?QmIzVWJ3NU5UazduNWZocEV4cXBCTlZVaUlNT1NMOUVEUUFWRlovQWxObyt6?=
+ =?utf-8?B?Q2pLWXZ0d0NiN29CWnBvMW5pZVA3Mm8vbHlHVFJvbktsN2xkZzdJOHdQKzJI?=
+ =?utf-8?B?Rk1kOGtKRExwQ01mQzg0K0VOVHpHczhncVN0cC9GL284U1QyOVhpdlB6MnBt?=
+ =?utf-8?B?bzIzLzJVYWlRZDVEUTY0Z1Y0R2NUTHF6RStuNFFrTXd6MmFEaUFWQXNOa2pK?=
+ =?utf-8?B?cWgxOFdmTnJvcFRKVkpyQzN4L3NRN293d3lVc2dEb1g0NGxMazZrdjJqRjNk?=
+ =?utf-8?B?V2hFa2svcTVYK2NWa2xkMkxVV2M4K0NESWJWa2tFZE02RUlhZEN1YTFWVkVp?=
+ =?utf-8?B?V24zUWdLOWFXQ0tuWEdmLzhGZGpUZWc2ajM2NldMRXJVMCtWenVibHI4d3dw?=
+ =?utf-8?B?U2k1Smlkc2NlWTcxTVZJWEYwdnZHMFF0bGZ0SzJpSmcwWnF6VU55Tzd5cTVI?=
+ =?utf-8?B?SzBVbFhKRitseENVWS91M250dzJmYUJ5UGlVdXg5NFFjc0hxRmRPOGlFMits?=
+ =?utf-8?B?WThZQ0t1VXI5akJGOTJuZ2ZnaDJPeXgwL3RlT3E4UytxMGZjcUJCUkpEamNh?=
+ =?utf-8?B?VVVqazVaZGdCbFA3cVJYZG9GMGdNTTFIaUNKemhHMERrMkI1eWovMGNQRHpC?=
+ =?utf-8?B?SlplczExMk1NU2hlUU9Kb3N5cXhtUGdlS3haZkdHaGxMeXpzRkVnbzRVaEFR?=
+ =?utf-8?B?SFo4SWh0SUZXeWhRd0gwTWMyMWVxS1krS3FmdGFjMlE1T1NNdXhsTFY5S1RD?=
+ =?utf-8?B?RVN6Y3l0Y3M2cXgycDRXTkNIK1Z4aEREZFRvdUM4NFJsN2RTRlNad2Z4VWtQ?=
+ =?utf-8?B?TDArU0lYME1QOWh4Qk1YMGpsVXFSU0NyYWdHZEFseFBYRjdoSjhWWmZjZStU?=
+ =?utf-8?B?QVhlcnc0TFRmUFMrVCtPekJWYkpjay9SVEFYWE9SOUhIS3JMZDRCMDlKc0ZK?=
+ =?utf-8?B?NXNHZEpXSTJxL1YvQ0FnTnhhTjhjUXZCcXc0OVVGS1plVldMNnlPK2xsUkNk?=
+ =?utf-8?B?KzVVL3RqTWp6c3RsMTdaREU5dnhsVmdyQkExSTlXRUZBdnJFTjZwYURraVVO?=
+ =?utf-8?B?cTYvcGJIcGFFSE1NTjVEVW9kRjRMUm1HNktWMTd1UEh6MUxvSEUxTngyNlJS?=
+ =?utf-8?B?UnpJQ2h0bGpTblhHLzRpL3ZRcnFLNnl5S2lFNk95Q21nVytTTkQ2ZTVLWXZP?=
+ =?utf-8?B?UmdDRlpEbHFCbFUrTUVTMUx4cGwwTUZMVSthV0RuWUVGMXU5OVhPV3RSMlo4?=
+ =?utf-8?B?NEJzL2tweHhQb0tyN3hsQmpYZlJTYmlHazdCcHA1WEp6aEVGcCsxMGVNK3J2?=
+ =?utf-8?B?YzBVM3FYVVo4Qm1QTGwxTjB4WlhSNFNUT1p1dG12SElvZ3R5QTVtWE56Q1Iy?=
+ =?utf-8?B?RCtBV3REQnluWWRablNWVTZ1cTRYRlZ5RDZCdE8rQTkvaUcvUEwzb1hWWVRw?=
+ =?utf-8?B?MjljZ2pJTmljTHFEaHgraWQvWXVHMGZPK1c1KzZHbnZoUmgycUtGN2sybmt4?=
+ =?utf-8?B?eTBPU2ZFcE8vMS9hV0tvUHk5dkZZeC93YWFGQnVPWjRpRU5jVUtyVUhkRmF1?=
+ =?utf-8?B?bjMrNGpkT2wrbzBxaEk4b05UdW5MZkYwQmh1SGNRSWxYbUFQZ1NzK1c5VWVR?=
+ =?utf-8?B?ekhMdms3TnNVMW1yc2FwSm5kT0xkdmFzTkRuK2lqQzVPYWc9PQ==?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR06MB9453.namprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(41320700013)(376014)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?amNkWWpzTjdPQlRPSitVTHRLa2l2MFppZEl1ak50NlczNGpyZXl0UldiNUcr?=
+ =?utf-8?B?a1NGSjdGU0xpK09UbUljZ2VQN3dpNmhGVjJaSTkvNUxETzBpd2ZGREhySkZM?=
+ =?utf-8?B?OC9OMnFBRjFyNEllU05PRzNlWUVNdmxVcDQzNmQ5b1dZVmhEblR0UmROaWwy?=
+ =?utf-8?B?blBKZTFxTkV0bnlvR1QzUjdzTTBWNU45d09qUkIxK1VWT0h4UEtPT1pLQnBp?=
+ =?utf-8?B?bS80Sld0eEhpK1JNSk1ubi9DYW5wQ0hXeEpSQ2V3Mk1uVHFVR2d1VnNVSDY5?=
+ =?utf-8?B?WUNyaHFsMVlVVmJ3VUM5QUFCRy9VQUJGYldYN3A5WDErcHc3bFlHbVJrYTB2?=
+ =?utf-8?B?d0pwcWhyMGx4SG5tVHlzM2ppTmtQWjRjS2F0Nmg4QWN6VnVOU2NVeWNHSUdT?=
+ =?utf-8?B?QUZzckdhWC9YYktEdHhhODhITVNBUktPbnNSbWx4cUc0ZmgzL25Sc2xkQThW?=
+ =?utf-8?B?QU40QUtLQ2tHekVaTk80ZzBENTliTFNaa3pUcTNOWE9KSnY2TGdGaldTdDN0?=
+ =?utf-8?B?Wno5b0VlWFdNSUVIRnVOOUZwR0hLSnRHTTdORCtOWkh5NXlkcU9VQVJxZEhO?=
+ =?utf-8?B?MjdhcVhuVVlacTErUWlTV0hWbk5OTDdoV0tNeUJkWTR3YWJTWGtGVnZ5REgz?=
+ =?utf-8?B?QUY4ZE1mTmN5ZG9OK1dMZHBsa0dqdk5ndDFjQnRSc21JMUwvRTZRRTV6MDdN?=
+ =?utf-8?B?a0hQdGFVUFZma2Z3MDdFUUh2WjlLc1ZGdU53QjgrMGRFNnZTd1M3YmhpRk9u?=
+ =?utf-8?B?clA3T1h1TlpRMXcxUjVGNUZDMzRONytrbDN5eFdoYmw3K3NTYTBZLzBpTzNp?=
+ =?utf-8?B?RE90T2E0cEdnOERqaGZ4aWxuK3RGUnpxeFBnc3dHSUJUQXJjelk4OTh2RS9x?=
+ =?utf-8?B?eWhlZjJEa0djb1hsbTVPZ25DQkdSU1NKMHpUUjVONTQ1YjZzZk1qQWR0U2pj?=
+ =?utf-8?B?Qi9EaldYeUZSalF5UkRsN1R2bzMwWmloWG9LZTFDUVpaMjRSYzFDWllKL3VE?=
+ =?utf-8?B?bm5VdDlRaHFBQkRIaVFsSkNyYnlJL29udHJoWkhzeUFGWXVoR3hCWXo0bkNW?=
+ =?utf-8?B?YXZ2VWdYOXdHVkFTeitiSlJVZ0tGT1NxSmlHSksrNWZXS1V5elkvNTVJQU5N?=
+ =?utf-8?B?ZTZNVlNMcTdPMTFKVjNPdGY5S0pyaTFPOEhLYU9oVStHSFR1VXZhQ1NaZVVE?=
+ =?utf-8?B?MDQ1ck5LdGhhWmJoN0gzMzQ4dkFtN3VZMHM0T3ErSTlPVWxPSGVEZnFaVXNG?=
+ =?utf-8?B?MWl6VHM0bzRaeUZkd0xMcERIM0hQM3FLSVBGMGRYalBHRC9scHdJWjRpcG94?=
+ =?utf-8?B?d2dSOGZaZGJMYkhpTy8wWHl4aGtmd1ljMWxSMk84dnVSNmdqRHo5RFhmaUZG?=
+ =?utf-8?B?Qno2eHRWMk5aN2pDQ09BZDEyMkIra3pMV3d2S2t6RXk4NEpwQ0NxV2FLOVZH?=
+ =?utf-8?B?Y0p3RWpDMjd5REo1Nm5ZVVcya1R4RGJJSzUrTllMY0lVUmFwMzEzdEplR0NE?=
+ =?utf-8?B?eERpdGxDci9uQzFqb1ZkTGswaW5ha0dBdlZ0MXZ3SHRORzl3N1ozYytmL0t6?=
+ =?utf-8?B?NkFrUDdlSU1PVkxwT2VTRWEyUjk4Tkgwby94OHBNSUx1bHJSVTlQLzFyS2VI?=
+ =?utf-8?B?QzBTdjRvbVpiYVh3NHB2d0xtL2lRQ2NES0MvWWVNTjZHblVRT2JDaWtwUHFi?=
+ =?utf-8?B?ZmU0YzRIM2Erc2JKbDFJVjI3R1NRR0JGUHl4QXlWNUxYMHVOZnlXTGYrMGp2?=
+ =?utf-8?B?Q2FVRzJwMW1MTW90UjV2aXQ3RDQvVEdDOWhXRWV5dUpBMGF5ZzRXVUVSQXJZ?=
+ =?utf-8?B?Zk1CUU96emRtcytuaUVUQkFXSmhBNjlYRmRzd2tDbjhXV1BncGJuYTdUL2dE?=
+ =?utf-8?B?UlAzbVdYUW0wTTgwcjNEZW9CTkRKQk5zQyswKy82aTlMLzNUU3Y5QnVzUkls?=
+ =?utf-8?B?bGttT2xPQUNxNXQ5Ylk2VW91VW13NmF2a1ZKL2RrbTQxUEtjL3RjV2V4VENV?=
+ =?utf-8?B?bXQ0bmZUYnVVZ2p3UGdUTitsdVpQTnJnajR2cnd5dlRLU2tEQXJlcEZyTDBi?=
+ =?utf-8?B?S1NNQkxlQkJTN2liTFI0TW5mMGlYRDEwOGVPekZISEQ4NWxGSVptaUtYaUFM?=
+ =?utf-8?Q?U31xcT0+G1MuqjeOn4QMO+NkP?=
+X-OriginatorOrg: wisc.edu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6e9b93c8-7a76-4b8c-6ebf-08de1e598893
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR06MB9453.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Nov 2025 23:58:22.7819
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2ca68321-0eda-4908-88b2-424a8cb4b0f9
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: N3PbkpUP/70TD9uqcucpzJtw6qG6hLF55DxwxXRv3EOk+Q40SGS6wd8VSN92i0lj
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR06MB9884
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA3MDE3NyBTYWx0ZWRfX5MpBnThMOAaH
+ M4tb8xDA9YMc30ttM50/iC45wSIo9aKb5njPHdUyTjtzUymmdsCvQDeLbaf2T7KcAUpuSpA+WwQ
+ aC+ruoEDQsynLS4jQhAcE5icj5xTVQwKYzp+9+0+OpRR5poHUHWil1Z1eZG+cPeovXLkOCvwqLX
+ s4ZkJPZ/NdyhinrD97Lpa4aMHR60w4lfhL330HDhAu6eFpVjThraTuQY/DXuQJs5UenVOPZCUJo
+ 5vcRNPtPAcrfpgN5QQiH+FFcjsvtABBZVViA2PGHKclWsg6qLxCmvAG4j9COLKtP0Senc0eLQ9N
+ DPsTyAKUAO2ooNzXntEAvJHBHVKNOAgv1pV+awWzypGVsugldz/MpCo8nincdBM5uecCbcnjDNa
+ gLU8WfQRIVF4gxiUcfj8AS/cU0XUkA==
+X-Authority-Analysis: v=2.4 cv=YrwChoYX c=1 sm=1 tr=0 ts=690e87a7 cx=c_pps
+ a=AaT4FrH4hTNSk8p5YcQWtA==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=x7bEGLp0ZPQA:10
+ a=U-hppK1rdbEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8 a=4kGR-Y0bAAAA:8
+ a=ddGet3y2AAAA:8 a=wsHP5XtE7_3Q9lRzzbIA:9 a=QEXdDO2ut3YA:10
+ a=raS2KSKlvgMoiaioHfP5:22 a=3j0kk0hvlXQrNlx-I_T_:22 a=poXaRoVlC6wW9_mwW8W4:22
+ a=pHzHmUro8NiASowvMSCR:22 a=nt3jZW36AmriUCFCBwmW:22
+X-Proofpoint-ORIG-GUID: dgIjahPbWTEU0t1ucpsG3oz3ZCuLdydM
+X-Proofpoint-GUID: dgIjahPbWTEU0t1ucpsG3oz3ZCuLdydM
+X-Wisc_ValidFrom: true
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-07_07,2025-11-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 spamscore=0 impostorscore=0 phishscore=0 clxscore=1015
+ bulkscore=0 suspectscore=0 priorityscore=1501 malwarescore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510240000 definitions=main-2511070177
+
+Fri, 07 Nov 2025 at 02:25=E2=80=AFPM -0600:
+> ----------------------------------------------------------------
+>
+> The following changes since commit 34f8beb17e62470222bda610eabc0646d2a366=
+fa:
+>
+>   flash README.md with more colorful thingies (2025-10-27 15:37:09 -0500)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/SDC-Fall-2025/Team-17-Project.git bip/club-radar
+>
+> for you to fetch changes up to cafa8f4849cb6ee1763138254ee5f203a30955c5:
+>
+>   add even more exhaustive Mac OS + Windows ignores (2025-11-07 13:02:56 =
+-0600)
+>
+> ----------------------------------------------------------------
+
+The deed has been done:
+
+To github.com:SDC-Fall-2025/Team-17-Project.git
+   259684e..cfb765f  HEAD -> master
+
+Looks like this automatically closes the GitHub pull request. [1]
+(... which I forgot to create back-link to here -- sorry! ^^;)
+
+[1]: https://github.com/SDC-Fall-2025/Team-17-Project/pull/1
+
+Also: following this merge I will rename "Team-17-Project" to
+"Team-17-Club-Radar".  Please update your remote URIs if you have
+cloned the project before.  (GitHub is forgiving in that it silently
+redirects old repository URLs to new ones, but you should not be
+surprised if GitHub stops feeling like doing so.)
+
+Moving forward I will be creating a task file for roughly how I think
+this thing can be split up.  (The exact location of this task file has
+not been decided by me, so keep an eye out for it on Discord (or this
+list, but only if someone actually reads it.))  Detailed specifications
+will be added following the Saturday meeting [2] irrespective of
+whether anyone shows up.  Please ask me for clarifications by creating
+a *new* thread here on the list (please don't reply to this thread;
+it's confusing unless you are actually talking about the pull request!)
+or posting to Discord if you have any questions about any task, or if
+you want to propose new ones I haven't thought about.
+
+(P.S. by "creating a new thread", I just mean that you send an email to
+<wisc-sdc-fa25-team@list.rapidcow.org> *without* replying to this one.)
+
+[2]: https://rapidcow.github.io/site-wisc-sdc-fa25-team/meetings/2025-11-08=
+/
