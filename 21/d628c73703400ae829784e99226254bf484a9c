@@ -1,0 +1,262 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.3 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DMARC_PASS,RCVD_IN_DNSWL_LOW,
+	RCVD_IN_MSPIKE_H5,RCVD_IN_MSPIKE_WL,RCVD_IN_VALIDITY_CERTIFIED,
+	RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,URIBL_DBL_BLOCKED_OPENDNS autolearn=ham
+	autolearn_force=no version=4.0.0
+ARC-Seal: i=2; a=rsa-sha256; t=1763065202; cv=pass; d=forwardemail.net;
+ s=default;
+ b=JFBTpkYkUL1tpAqVnSamLowhdk2OrbsCTV9GYIRLzg3GHKoVKX0SueyndqluSMjxNIkbl2lUq
+ LKbN68b3zaEmw0sVKwlKjt4l8WI0zkmhnIB/f/7WGf7ew4KPa4vYzWKyyHENI5R5w0yJaqmwF7E
+ udhGZ07vXTDR4G+4CEgk42s=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=MIME-Version: Content-Transfer-Encoding:
+ Content-Type: Subject: Date: List-ID: To: From: Message-ID; q=dns/txt;
+ s=default; t=1763065202; bh=vNsKP+JGc9nppc7x0zpXqSJAynspbc5CmCmZOn4LMbc=;
+ b=LTTPPqr+JobkDCPs8xj1S4XS/5SfmjTSfQn3EubeI4BGXqvL6NXmasJLq1D9o58t0BEAFBjkz
+ zx+CVQmj1YetVLNcUyuLeD/dsIoOPY5QKgIZ5MhN7E3wW2bBx5H2ckxa1+H09YhgAuND+xquMKA
+ jm+O/TqprxNbbvMeElXV2T0=
+ARC-Authentication-Results: i=2; mx1.forwardemail.net;
+ dkim=pass header.i=@wisc.edu header.s=pps1 header.a=rsa-sha256 header.b=ryVAA71H;
+ dkim=pass header.i=@wisc.edu header.s=selector1 header.a=rsa-sha256 header.b=dRjE2CPJ;
+ spf=pass (mx1.forwardemail.net: domain of ethan.meng@wisc.edu designates 205.220.177.71 as permitted sender) smtp.mailfrom=ethan.meng@wisc.edu
+ smtp.helo=mx0b-007b0c01.pphosted.com;
+ arc=pass (i=1 spf=pass dkim=pass dmarc=pass fromdomain=wisc.edu);
+ dmarc=pass (p=QUARANTINE arc=pass) header.from=wisc.edu header.d=wisc.edu;
+ bimi=none
+Received: from mx0b-007b0c01.pphosted.com ([205.220.177.71]
+ mx0b-007b0c01.pphosted.com) by mx1.forwardemail.net (Forward Email) with
+ ESMTPS for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.2
+ cipher=ECDHE-RSA-AES128-GCM-SHA256); Thu, 13 Nov 2025 20:19:59 +0000
+X-Forward-Email-Sender: rfc822; ethan.meng@wisc.edu,
+ mx0b-007b0c01.pphosted.com, 205.220.177.71
+X-Forward-Email-Version: 1.4.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Received: from pps.filterd (m0316046.ppops.net [127.0.0.1])
+	by mx0b-007b0c01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5ADJkRMM018205
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Thu, 13 Nov 2025 14:19:59 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; h=
+	content-transfer-encoding:content-type:date:from:list-id
+	:message-id:mime-version:subject:to; s=pps1; bh=vNsKP+JGc9nppc7x
+	0zpXqSJAynspbc5CmCmZOn4LMbc=; b=ryVAA71HxZ36i/SzLCKM48n2oHM4s1hh
+	w0Ew+kgtQ/Odp3Q2AO8oksuMlbUHvgwL6SohncfnTFoYo9OWpnIrkhLhs223QLbz
+	cEMBPPjOTP8dU8KxRxJFF4aRaRNDTrm43STJhU2G0IbXSzY8ar1MpVsDNmhQ00vZ
+	m2ssjQMgrjAENUqGxNGTsIN5F4piJrNsHX+eesdzm7EOTqTM4YwJs03Z4kuZkvpe
+	5mRMOuhPOfltE+rCaf7RWEzI1flKDQ75qBCQ1cZ2Z+lcN2O80yWjaMrju+OUG5tC
+	z+stqYhk5L6R8xMB41L1125G+LxLkJkVtM6XiGOnbDvuSDif1av4Dg==
+Received: from ch4pr04cu002.outbound.protection.outlook.com (mail-northcentralusazon11013010.outbound.protection.outlook.com [40.107.201.10])
+	by mx0b-007b0c01.pphosted.com (PPS) with ESMTPS id 4ad23kq7va-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <wisc-sdc-fa25-team@list.rapidcow.org>; Thu, 13 Nov 2025 14:19:59 -0600 (CST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=P7H9qY/nyCrae7ewH0a8RpGaa1SfRo3MTwNjqfuObXuDnkks1K6UMmOyCALTvVfw/Jjq5yNPBjQDmbBSRsvTsQvY721PtrBOjwYo142bE6q3FdMuIg6LPNhupT/6J177VkUBjmCud1l/ZsItgtJRIpBRJyVWd3S1KeTMXVlB9bet+357MqDZC1DOWjW+rTqnT9v/Iqrga6R3Cmf2t2BVbiO9l4Z210tAmBzRsLLEJWzZ3YF72XDcH55CBCyMmXO2n32NZu7HfjXnnRMtd1wvgwWCejGUZN4Al6TAVN5VSbDl0vl/ERjkfz4D0NTF9KikUQUHzrOHgA0zCJdohxfRyw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vNsKP+JGc9nppc7x0zpXqSJAynspbc5CmCmZOn4LMbc=;
+ b=t7M8ZeLagtM/BrpvLcVExBs1ZpdVyvgk8q+lhwHPJMnZmlbFx54yDwbtHoLMjqYCuADRbsN8cU2jkpeui9zzQELb707JK+eoCceOCkZxMbl0/lp+E4l6gE4sja5cbb7vpyjxDiTHqI9oKgYEB/VgPWSp6pytEl/yutXURjjc/Dh9r/AXClnHKPghAsVsDGHLfY+eF5s7NRuxdfVG9S/Yqa9n7pHUyLtMp2/27pnGSfTWhLqGFAhhl43q3FIMRRtbTryVJQqHOVvQ2ET6mEgh1u0MZ8Y5adLuopWbl7tK2wXtIkliMl+URUsNBWHUNlnR8tex5Dx5cRx4uiQnqjEDbw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wisc.edu; dmarc=pass action=none header.from=wisc.edu;
+ dkim=pass header.d=wisc.edu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wisc.edu; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vNsKP+JGc9nppc7x0zpXqSJAynspbc5CmCmZOn4LMbc=;
+ b=dRjE2CPJMDRo1ifgm/ZcRrDm656cfAn64VnZ5cgSjzLihCxH7FtfjtLc20t5QDqWEKhSUd+sIzLnn5gv0sNcEwWeeyxbEOVowUNx0DIT9dmxVQbGKf+qdrsCqdsZobadeNygj3rWpN3fpXtkAMM7TVjzAyShZVT8c1KCTfGc/wqI3ff25vJDNkL1F5apaBz9kILij+1aPUEYFXxbYbsKfONdlqMP2qckhtRt4fXfR+slDaX2sABThBqZqyqNmAvAhzZ2Z9WxIG9BzYEOGLHjWvcibDo8lyA9ox7v+tQINkUwRYOlc2iMUYHzlH2s77dIn6NdUkft3fPTiCy4OzshxQ==
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com (2603:10b6:408:19f::14)
+ by SA5PR06MB11211.namprd06.prod.outlook.com (2603:10b6:806:47b::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.17; Thu, 13 Nov
+ 2025 20:19:57 +0000
+Received: from LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb]) by LV3PR06MB9453.namprd06.prod.outlook.com
+ ([fe80::689c:2e7:579d:2beb%7]) with mapi id 15.20.9320.013; Thu, 13 Nov 2025
+ 20:19:57 +0000
+Message-ID: <1763062962.PATCH0000.v1@q.rapidcow.org>
+From: Ethan Meng <ethan.meng@wisc.edu>
+To: wisc-sdc-fa25-team@list.rapidcow.org
+List-ID: <wisc-sdc-fa25-team@list.rapidcow.org>
+Date: Thu, 13 Nov 2025 13:42:42 -0600
+Subject: [PATCH] Re-license under MIT license
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: CH0PR03CA0208.namprd03.prod.outlook.com
+ (2603:10b6:610:e4::33) To LV3PR06MB9453.namprd06.prod.outlook.com
+ (2603:10b6:408:19f::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR06MB9453:EE_|SA5PR06MB11211:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3a3c939a-b495-473e-624f-08de22f203cb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|41320700013|366016|376014;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?TlZKWTU4OU82YjA2V21nTC9WUUp6dVdiTHdwZ3dDeFc2c0ZiSmVyM3dMY3d4?=
+ =?utf-8?B?b3duWTRXcGt0b3pLOVUvU2ZNTWN0aysyaGJFbFF3ZGVXZVEwK2UrWU8xME9J?=
+ =?utf-8?B?M0ptSlpSNnIrOTBqdmZaU2tBTTlaQ1I1V2pvV1VpM2l0VEYrNnpONjZDYUU3?=
+ =?utf-8?B?NDJSU1U5Z1BxY1huUlJNc3hGWVhEMG8zUGhVbUE3VXRNQVNvUXdYQnVtSGp1?=
+ =?utf-8?B?dDkzenUzMTVscDIyOTB6NDVlczhvNEh0bndzSlU5S1V3bi9zU2IrUlo2dksr?=
+ =?utf-8?B?azJlRW5JZUNVZzJhMkhYQThTeW54alZpakErbHhlWWxlNlh4L012Y3Izd29Q?=
+ =?utf-8?B?ZE1GaUEreHBjQVM4MUVGNExibytmMFBxVkc4MjJRb1hEQ1Urbk00WGFRNnNh?=
+ =?utf-8?B?TVFOWkZ2dmlEQ0NZNU5kbkZqL0ZyNUdKM2FLUnVIRWdkdjhMY21MeDZCYVJN?=
+ =?utf-8?B?cVZYZG9CU1ZqMG81Tmc1enFWd3NlWjRGZkRxU0hjdVNSRk9kL21id0JFYW9D?=
+ =?utf-8?B?S1ZKelczcHJCRGVOZHZTYU5mQ1Qwajd5RGl6ZFlnaUVRRkttQXhpa1d2SXla?=
+ =?utf-8?B?MWVHVW53UFFMcGdUWmpWMEQ3am04eVR4YmdXVkQzY0JaU0dPWHR5aFN3dk9G?=
+ =?utf-8?B?d0dBdDhOdGViTlFOUjhYWGI2ZFF4RytBU0xzcnc3RUFwS09LMXh4blE5RUd2?=
+ =?utf-8?B?VlE2emtybUZ6dUVuUnJNb2RWSFBVbitWSFhTbm1rVnhiK0RkZHRLKzJDK09i?=
+ =?utf-8?B?MlE2bDJZZkd2OUNoSjhlYS93L0ZwYlNlRDFPdkJTakhWQ0E3NFVjckxpc0xF?=
+ =?utf-8?B?SUIxeWRmVjFNZm8wWEpuOFNETkwyQmFGMlQ1bC9jSkVhQzc3aThSRVg4Vm9M?=
+ =?utf-8?B?bDg2MHRwZXRudHd4anJEVzBpelBrM3ZFK3hhQ1hCN0Z2eDEwV0dJdU9qcmNB?=
+ =?utf-8?B?VTBGZjFVK0FORE5rYjZueU5WazViKzBPbnJ3Wm43b1FqaDdqNDgwalIzTXU0?=
+ =?utf-8?B?aUlVNlpDN0N0RTVYeWh0eFk4WDkwRzhTeHhseVlZdnZRMTVURHJvT0cyK3ZU?=
+ =?utf-8?B?c2VPUm1Sdm1IZkxWYllUK2FIWkUrRUVaWmx6RVNSZEFsTFE5R1hhT012SkhF?=
+ =?utf-8?B?V3VyWlJYeDc4Vko2Q3NSVHJFV1FVd1M0OGxwbUNud2pUdXZRcGExYU9oWHIv?=
+ =?utf-8?B?d1pFTGowZVBpUVNZYmJxaUZsQkxKcXFXQkNjT09nMXBSYmxFS29BQ0RuanFv?=
+ =?utf-8?B?M3MrOTUxU0M2L0JucE5pNFExRjBMd2hqQzk1b3d6aHVUbFZnejFJM0MyV1p0?=
+ =?utf-8?B?WmdPc1dFS2t5UXB4bzBQcCtjZUhyOGowV1FIQzliV1lpTk1USkpJZjZRcGtp?=
+ =?utf-8?B?WFQwb2xoTk9PVVVlZFl0NG5QMGJGUnQzRE1mQlRVZXYySmI0Q3FmZWRTQmVB?=
+ =?utf-8?B?OVpzakk1eFM5M09HdFp3NS93bWt2V3k5dVRud052NUpsRThUNWNIRko0NlRL?=
+ =?utf-8?B?dXJ2WWFqMGdLRy9YZjFoVlpsSzVnOTN2ZHpsTmpQWkNvS3EwWjQ3OHZkT1M2?=
+ =?utf-8?B?bW5RQ0UrZmpnUGpCK3IwdlY0eHlEcFl4OThEZzlITXhwQVNBT2tqb25aMjZl?=
+ =?utf-8?B?cnhHLytMYUlBU2JCKzJnTW51OFNDcWxkTGppUU13eVdPRDlaNExkMldKaGY5?=
+ =?utf-8?B?Q2tLTnBuVi8zT040cVZBNjFHY2hGeURlT25ocjc0dDNqOVlqb0F6R2xySW1w?=
+ =?utf-8?B?d0wyclp6NXJrdXlQNEoyK3dRMXVRU1NUNW9xWWdwRjdnMVA1NmdmVUF2YU1m?=
+ =?utf-8?B?MFNYRStzWjByRk1kT2dqQ09PYWM4UUxNbkVVdGZKWXQ4SmZ6aVhrUDNJUTVI?=
+ =?utf-8?B?TzZwa3VEODhqeTI3Z1BPaXNvL3BEOThVcHNkc3FZamI4bTU3dTZ0WkZaaEw4?=
+ =?utf-8?Q?+oXMllHL0AEYd2tMJtGkbeWLVekeyiQS?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR06MB9453.namprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(41320700013)(366016)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?dDlGVUdScGtqMkpoaFFrOWN0OERVOVlQTjRTdHBqRjR0L2VuOWUzQ0NJK1g3?=
+ =?utf-8?B?NCtCeHpCVElPWlhEQWdmWTVNZnN1K05DclZHUVhnaW96WGpqdHBPL3hYa2xv?=
+ =?utf-8?B?S29kb3ZEZG5QTGZPd1lCcTBOUmZqeWZOOHpMN3R5aVBGZFBGSzNUQmxzWFdl?=
+ =?utf-8?B?em83RlZTUTY0Q0NFS2FmT3owMlhNa2FwditSNklRejZIRnhrY1JyZitaSGxK?=
+ =?utf-8?B?QW1yWDIzcjRTbTg0RnppSnJjc2NIQ1lVd1lvT1IxTC9teWhkSzFsY05xbSts?=
+ =?utf-8?B?S3gyRW9UM2h6bzBEVXJCK3pXZkRGNWZQQWpjeVA3bExGNXVMQXJCaEFRQkNB?=
+ =?utf-8?B?SzdNWXRPMmVxTFlVcWFsSVFQMmFrNkVqcGFycGUxM29tRytpcnhCVUVhY202?=
+ =?utf-8?B?YzVsSmlETC9LbE1oNG9iRHBCdE1YRmx6cTBubWxNdjdFQ1dWNXJ0NjRTZlBt?=
+ =?utf-8?B?R2ZlNEUrekZXcFMrRUNmNmJSYSsvVElOQkJLazdScUhMdmZKWWRDdndZNHE4?=
+ =?utf-8?B?VWxiQkJWbUQzTmtGeUlLbVkvR2Z4SkZjeCtLNEk0OVpXK0cwWHdYS1BFQ1J0?=
+ =?utf-8?B?cVNxOW8xckVva0xvbGdXckxuajF0VE9sZU8yU3dQMUZMZnl6aFBwVERuNUc3?=
+ =?utf-8?B?bTZuZWN4TTlqOFlnWXF3a0dBRmhpb2FlVFdFaTJMbnFVbmoybloxU3V1UUd1?=
+ =?utf-8?B?RURKaFgwbEVJeUF6bHVNYVBDa1M4WFpMN3lqbSt6NmxFTFRMYXZKUStNeWhS?=
+ =?utf-8?B?ME9DNFJmQnIrQ054WjBReWhaSVNCRDZIc0VyL1RlL1hLMVNQU0sxZnlLcmVl?=
+ =?utf-8?B?WUZKTmR6VUZIYmp3MzNKdXFHNU1hb2pJVWF6ZGt6U3lkcEJiK0VlMWlrOXJD?=
+ =?utf-8?B?YlJpMVpUa0V0ZmpNQnQ1dnpkZ05yaEZISmxnNVcxVEcrMEFseTZGNUY5aUwz?=
+ =?utf-8?B?OVk3MTZvN1RIQjU1TTFXUk5PZlBUeURpOFl4MkNIVVcwVHN0UlpiTXlDSnBn?=
+ =?utf-8?B?QnBWUXRiNjVBS2llTmV4VXR1bncvNnRITm45ZFB6N2c3RUdMVmF2RUxqRGo3?=
+ =?utf-8?B?SjhmR2k2bHNpZ0hlSXc3R2tzZGg3NEtIWVZIQ2gwSXdIUGRYT20vaFZ0T3Rn?=
+ =?utf-8?B?UERUNk1WVUtaT2FqQ1FucG1CVDNjcVZGcm5KSnZFQWM4eTZvNmZkby9PVU1I?=
+ =?utf-8?B?eG9BOEJmZWExbFBlTExOeXhtbWJuQk92T3NnaG1KaElHSnRVZHRFTCt6alk3?=
+ =?utf-8?B?bmZQcnZTb1BEbnZtUkNMcnhHYVJlQjVYZzFwSTRyby9CN2hCQ2l2M0pBTkNu?=
+ =?utf-8?B?Ry9aNmwvVUFEOWxzVk01RmJiUWFJVEFDK2lYMi80SlFzQ2lEaWZhRWo1a3BI?=
+ =?utf-8?B?M1RKMDJCcDYxSEFDQTJCcTlTNE94Mngya1NGNHJYRHdBdWFQNzR6QlZJbUVC?=
+ =?utf-8?B?Y0JhYXVrZnUzQnBVNXR3N0hqeWFraWtsc2tMNFRwZEN3UTZiZkdoSjZzd2ZC?=
+ =?utf-8?B?aEdhaHB2TnBZZkRzUmt6NWIyK3Q3OC9rOGtYbjh6QmV2SFFoaEZRVjNGeG1D?=
+ =?utf-8?B?ZDV4UmtaUi82Z21sT1VlTFE4QVZJd3crTUczbUM5VU1IQVoxM2RaV1BpWWli?=
+ =?utf-8?B?dDZMdHlhVW03QUl1eDBETFN3eVdERmYzSmhuNlNxUWt4c0hCTnRXRmFHRmdT?=
+ =?utf-8?B?b2pZN3RGWU5TUmNUMWcvYThrQU80cEVIN2xHUFhLQkZxbTRuY2gxQTFkdnUw?=
+ =?utf-8?B?b2NBdnNxQk9xOFVtaFM2U0p2SEgrVzRXblF3eVlPbTlEWEhFY0EwdzYrR2w3?=
+ =?utf-8?B?bi9LNElvVjNFY2VaNmxnSjFqNVczQk85NGdFdTByZjZzQVdpN29taXNwcTlO?=
+ =?utf-8?B?UHFtRXVGWTI1TU1hZWNHd29kNXExdFBCdXd3QzlMNUxmSkJQTTcrdmpHYzd1?=
+ =?utf-8?B?Z0FMMVFTTUE1T2RvbHlCU0UwYkFBRUoxcHhEZEhJK0hqSHZEeEF2cHJHVmxU?=
+ =?utf-8?B?SWo5RlNBMjR1cHBreVBMV1oyc0oyTk4ySE1LMm5MaC9JbXpHdDhMN0pvTXp2?=
+ =?utf-8?B?dlpMeEhvQTAzYURBejhLRGpNd0xTTXFab09pWE5XYkd0MHl1OEl5VXFjc3Rh?=
+ =?utf-8?Q?Ul6YgzxL9enW/75azm8UfbNNQ?=
+X-OriginatorOrg: wisc.edu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3a3c939a-b495-473e-624f-08de22f203cb
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR06MB9453.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2025 20:19:57.6767
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2ca68321-0eda-4908-88b2-424a8cb4b0f9
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: SONvF9RAIRzxXP1tJ422o1Opfgc3/xp1dq+eE4wyKDZthYoOBiaT4rL4HuVyTqGb
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA5PR06MB11211
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTEyMDE3MiBTYWx0ZWRfX2h/Xyvt4bJcF
+ 2WslMJ6mwhetkNMUH3mVkROqot1l3olmOXvuKna6SqofVeHWyvCQP00XhtagLiuAjkiYi6akfLj
+ KgAdvdSeSxOuQ7dmreEZbYFJtr9UYFs0xC/nxWrc3/BLUTaR4KXbEfA2hX5uimDSLNIfG9Jw4V0
+ XE4gUwN1oDS/OrtAvtZv3Kb5DUl+yuvyp9heYptjJNEzlUfQMVsD5Hr2qY+uIL8BQd1+O/M5so/
+ mVgsrLEx+FaHOjM0FS/YR6swVPYtGHMrxmsuy70x/tbnzsg6PESwfHaN3ZZQSWCkvTjCYl9m2Vl
+ nnDcfDgTjR54S8sCsU8WngpefRfeN5vD2HMGOihAHAHR7vrxbnUZklaxvbHEeHBvniDd0YoHvy2
+ 5TJHBBBS0cu1bVrceLgzN4kRuVq1Rw==
+X-Authority-Analysis: v=2.4 cv=DstbOW/+ c=1 sm=1 tr=0 ts=69163d6f cx=c_pps
+ a=lThAoe1QXFDAbPfud5g0Zw==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=x7bEGLp0ZPQA:10
+ a=U-hppK1rdbEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=NUoV33iqwNTDAgOE7h0A:9
+ a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: IQ-e1_QHoALus4IrM9LLPLr5nTsniGEH
+X-Proofpoint-GUID: IQ-e1_QHoALus4IrM9LLPLr5nTsniGEH
+X-Wisc_ValidFrom: true
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-13_05,2025-11-13_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 adultscore=0 impostorscore=0 malwarescore=0 suspectscore=0
+ priorityscore=1501 clxscore=1015 lowpriorityscore=0 phishscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510240000 definitions=main-2511120172
+
+When I first created this repository some eons ago, I was not
+anticipating to be the sole contributer on the project for the
+first 100 commits.  However, five commits ago, that just became
+the case, just as commit 70e840568bdf9fc75ab8849bef98d25c4dfcb1b2
+was published.
+
+Well...
+
+Given the short amount of time left in this semester for any
+other member to surpass this imprudent act of squandering time,
+I think it is imperative that I release my work henceforth
+under the MIT license, such that -- should any future affiliates
+of the university wish to extend this application, they may pick
+it up from here (if they even deem this code base as anything
+sustainable and maintainable to begin with).
+
+This patch is not negotiable, and all future works will be
+published under the same license.  By pushing to this repository
+you waive your copyright to the team IRRESPECTIVE of whether you
+acknowledge doing so using the Signed-off-by Git commit trailer.
+Maybe before I got a full frontend-backend working, you should
+have made the slightest gesture that you cared to contribute;
+now none of you have any say over anything at all. :)
+
+Signed-off-by: Ethan Meng <ethan.meng@wisc.edu>
+---
+ LICENSE | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/LICENSE b/LICENSE
+index a14a019..027cc61 100644
+--- a/LICENSE
++++ b/LICENSE
+@@ -1,7 +1,16 @@
++MIT License
++
+ Copyright (c) 2025 Fall, Software Development Club Team 17/11
+ 
+-All Rights Reserved.  No license shall be granted until further notice
+-from the Club.
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in
++all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-- 
+2.51.2
+
