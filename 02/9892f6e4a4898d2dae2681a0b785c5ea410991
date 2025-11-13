@@ -1,0 +1,109 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-0.5 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_INVALID,DKIM_SIGNED,DMARC_REJECT,RCVD_IN_VALIDITY_CERTIFIED,
+	RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_PASS,URIBL_BLOCKED,
+	URIBL_DBL_BLOCKED_OPENDNS autolearn=ham autolearn_force=no
+	version=4.0.0
+ARC-Seal: i=1; a=rsa-sha256; t=1763069650; cv=none; d=forwardemail.net;
+ s=default;
+ b=lmRIXAXLzGs796+38JHLoJZtQMtWBoTLV1LNqVV6Shr227FvtLfuUYGRYrsPvByIWPHpnLP5u
+ 5DTfOi+tMDWRRVj/Bvl2YQj6skSa0HKYkl4NccM90CfQkuL2KE9yEBmTT5nIIX4qNqYgBdTwxsM
+ fhgBpq6REH07fmGKna23OCI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=In-Reply-To: References: To: List-Id: From: Subject:
+ Message-Id: Date: Content-Type: Content-Transfer-Encoding: Mime-Version;
+ q=dns/txt; s=default; t=1763069650;
+ bh=D4n4Gr0qhCw1dY7let4GIFKqcoMdyplLhXqKJvk4Mwk=;
+ b=L63DSsDYC+GeHxB31nBh4ZR+djAv7wjYm+EDiUe3v90cblWr3XzOkmHdeWqndG9By0vRInUyN
+ 13Sd3XkQRB36iI8U5cmUrW3NI9V+W8FOSBqvyiQaWEa1JCJhCcOEHS4VujjL16Tfpc/ecpELm0Y
+ S/AGaBSetJVJQ1PS3RjsMYw=
+ARC-Authentication-Results: i=1; mx1.forwardemail.net;
+ dkim=pass header.i=@rapidcow.org header.s=fe-abe68d2c00 header.a=rsa-sha256 header.b=WU4OzB4v;
+ spf=pass (mx1.forwardemail.net: domain of SRS0=da5f=5W=rapidcow.org=ethan@fe-bounces.rapidcow.org designates 121.127.44.73 as permitted sender)
+ smtp.mailfrom="SRS0=da5f=5W=rapidcow.org=ethan@fe-bounces.rapidcow.org" smtp.helo=smtp.forwardemail.net;
+ dmarc=pass (p=REJECT arc=none) header.from=rapidcow.org header.d=rapidcow.org;
+ bimi=none
+Received: from smtp.forwardemail.net ([121.127.44.73]
+ smtp.forwardemail.net) by mx1.forwardemail.net (Forward Email) with ESMTPS
+ for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.3
+ cipher=TLS_AES_256_GCM_SHA384); Thu, 13 Nov 2025 21:34:08 +0000
+X-Forward-Email-Sender: rfc822; ethan@rapidcow.org, smtp.forwardemail.net,
+ 121.127.44.73
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rapidcow.org;
+ h=In-Reply-To: References: To: List-Id: From: Subject: Message-Id: Date:
+ Content-Type: Content-Transfer-Encoding: Mime-Version; q=dns/txt;
+ s=fe-abe68d2c00; t=1763069649;
+ bh=D4n4Gr0qhCw1dY7let4GIFKqcoMdyplLhXqKJvk4Mwk=;
+ b=WU4OzB4veUf6xSK7AkG9uwMr42bIvySuqoyPyGEG2gmWp9n5whxPMDATXuwynthj77LGMDScS
+ Vf2VjcB1t1XooHYvdxqgQK3zYMCaqtz6siZaVCTEaLQKVqe17cf/OqvADdJiVnDj4JWszwMGXb7
+ Wz32fZw+J95OA19sqe19mYbE8GNZLinFVJDCGOHezApimeBzhERclvnAg0oUdmZd21ROs+Eg0SB
+ ELU4jVd8EWXtx1C9JAwN50pPrW4SQrDXtT7nRSV03CIMjIgElRUOYQuMJ2ujLNkSTJts4pAytwp
+ gpy/5Yf3gVppHxt8OyL05nKj8l+wtQzawbasrMHgQHng==
+X-Forward-Email-ID: 691646df1450c17a998c00dc
+X-Forward-Email-Version: 1.4.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 13 Nov 2025 15:00:06 -0600
+Message-Id: <DE7VB17OLYQO.2S1XN2MVZ6RWX@rapidcow.org>
+Subject: Re: [PATCH] Re-license under MIT license
+From: "Ethan Meng" <ethan@rapidcow.org>
+List-Id: <wisc-sdc-fa25-team@list.rapidcow.org>
+To: "Ethan Meng" <ethan.meng@wisc.edu>,
+ <wisc-sdc-fa25-team@list.rapidcow.org>
+X-Mailer: aerc 0.21.0-0-g5549850facc2
+References: <1763062962.PATCH0000.v1@q.rapidcow.org>
+In-Reply-To: <1763062962.PATCH0000.v1@q.rapidcow.org>
+
+Xposted to : <https://github.com/SDC-Fall-2025/Team-17-Club-Radar/issues/2>
+
+>From PATCH on Thu, 13 Nov 2025 at 01:42=E2=80=AFPM -0600:
+
+> When I first created this repository some eons ago, I was not
+> anticipating to be the sole contributer on the project for the
+> first 100 commits.
+
+While posting to GH i noticed this typo contributer =3D> contributor.
+Will fix that while I apply the patch.  (I should add that that "Eon"
+is not a typo, however; that was intentional sarcasm. ;)
+
+> ---
+>  LICENSE | 13 +++++++++++--
+>  1 file changed, 11 insertions(+), 2 deletions(-)
+>
+> diff --git a/LICENSE b/LICENSE
+> index a14a019..027cc61 100644
+> --- a/LICENSE
+> +++ b/LICENSE
+> @@ -1,7 +1,16 @@
+> +MIT License
+> +
+>  Copyright (c) 2025 Fall, Software Development Club Team 17/11
+> =20
+> -All Rights Reserved.  No license shall be granted until further notice
+> -from the Club.
+> +Permission is hereby granted, free of charge, to any person obtaining a =
+copy
+> +of this software and associated documentation files (the "Software"), to=
+ deal
+> +in the Software without restriction, including without limitation the ri=
+ghts
+> +to use, copy, modify, merge, publish, distribute, sublicense, and/or sel=
+l
+> +copies of the Software, and to permit persons to whom the Software is
+> +furnished to do so, subject to the following conditions:
+> +
+> +The above copyright notice and this permission notice shall be included =
+in
+> +all copies or substantial portions of the Software.
+> =20
+>  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS =
+OR
+>  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+
