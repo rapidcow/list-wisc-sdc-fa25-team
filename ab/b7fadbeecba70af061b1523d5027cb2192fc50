@@ -1,0 +1,75 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.6 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DMARC_PASS,
+	RCVD_IN_VALIDITY_CERTIFIED,RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_PASS,
+	URIBL_DBL_BLOCKED_OPENDNS autolearn=ham autolearn_force=no
+	version=4.0.0
+ARC-Seal: i=1; a=rsa-sha256; t=1763412691; cv=none; d=forwardemail.net;
+ s=default;
+ b=g46pWB+BFgIltLblUCH/HMKgMvRjWS+p1zc1zqqhI7e5p4t8ZmNaxJrGOfSb8rlvHjeZduqCX
+ 3zs289SilQvwnQUgFGNsT40V3OsQX7dF2rKSCo9aKqmZ61I9G4J+TaQ/1djyDuyT+C3txx1ggOV
+ NbUXYX5sThXRpneAmZnQ0do=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=In-Reply-To: References: To: From: Subject:
+ Message-Id: Date: Content-Type: Content-Transfer-Encoding: Mime-Version;
+ q=dns/txt; s=default; t=1763412691;
+ bh=W7shFYSMX3dUm4ZqksSEUdN2LJPBmnTEZnWpw4FDbow=;
+ b=nMUxF+r4hu6bJdLxK4zbh1NXArgmn1ZaGVY/mPmxwgPjwf6opBJ+KE3Ft9FuuZlkphZHI7Epg
+ 69lFR0nQpkocF7Y8BEhEPBI/t/zHGT1a3LaGfW7V6zCvUSPWduGIQCWzfFNKYUA6e6XwBCu3W8k
+ 2X9iBRo0nd0do6OTUGjVMac=
+ARC-Authentication-Results: i=1; mx1.forwardemail.net;
+ dkim=pass header.i=@rapidcow.org header.s=fe-abe68d2c00 header.a=rsa-sha256 header.b=jilM+ucx;
+ spf=pass (mx1.forwardemail.net: domain of SRS0=addd=52=rapidcow.org=ethan@fe-bounces.rapidcow.org designates 121.127.44.73 as permitted sender)
+ smtp.mailfrom="SRS0=addd=52=rapidcow.org=ethan@fe-bounces.rapidcow.org" smtp.helo=smtp.forwardemail.net;
+ dmarc=pass (p=REJECT arc=none) header.from=rapidcow.org header.d=rapidcow.org;
+ bimi=none
+Received: from smtp.forwardemail.net ([121.127.44.73]
+ smtp.forwardemail.net) by mx1.forwardemail.net (Forward Email) with ESMTPS
+ for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.3
+ cipher=TLS_AES_256_GCM_SHA384); Mon, 17 Nov 2025 20:51:30 +0000
+X-Forward-Email-Sender: rfc822; ethan@rapidcow.org, smtp.forwardemail.net,
+ 121.127.44.73
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rapidcow.org;
+ h=In-Reply-To: References: To: From: Subject: Message-Id: Date:
+ Content-Type: Content-Transfer-Encoding: Mime-Version; q=dns/txt;
+ s=fe-abe68d2c00; t=1763412690;
+ bh=W7shFYSMX3dUm4ZqksSEUdN2LJPBmnTEZnWpw4FDbow=;
+ b=jilM+ucx/tfgprwFpcfhd+p52pXNKkhI2Q/zblFdYFfb5nANP2ed6fUnnFmZJHUCUXlNYuoLB
+ 9YZhLjwqaMB+UwScOYTBNMd7jbfwOqQYIR0SJeyjF91Rsl/l+BUDRPsTGc/D/iOHw2qOFSeUtp4
+ YGs6+C40+gH/vYA8U6s1BHU4PUKMTtTscMbvIMD6yfRmrCuimcXxPcvsN7BIQpOS5b5SUI9i5ND
+ BRyFzr9ax0lUjr3ngciJL+fBD20gDJmxy/4ItqCZxuLK9ZyNQsPIJa1EAlN7gtBsmnPrsJAjShT
+ M1/xuUiK1QXrJIAOjP6aoROuHG6Rcko3fcjb/sx9vRtw==
+X-Forward-Email-ID: 691b8acd1b8383b0ed2622e1
+X-Forward-Email-Version: 1.4.5
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Mon, 17 Nov 2025 14:51:24 -0600
+Message-Id: <DEB9MJN8OIIK.34NNYZMP30OL0@rapidcow.org>
+Subject: Re: [PATCH] Re-license under MIT license
+From: "Ethan Meng" <ethan@rapidcow.org>
+To: "Ethan Meng" <ethan.meng@wisc.edu>,
+ <wisc-sdc-fa25-team@list.rapidcow.org>
+X-Mailer: aerc 0.21.0-0-g5549850facc2
+References: <1763062962.PATCH0000.v1@q.rapidcow.org>
+ <DE7VB17OLYQO.2S1XN2MVZ6RWX@rapidcow.org>
+In-Reply-To: <DE7VB17OLYQO.2S1XN2MVZ6RWX@rapidcow.org>
+List-Id: <wisc-sdc-fa25-team.list.rapidcow.org>
+
+Just pushed:
+
+To github.com:SDC-Fall-2025/Team-17-Club-Radar.git
+   1940446..0934abc  HEAD -> master
+
+I had it sitting on my laptop for quite a while now.
+Was a little worried that anyone pushes, thankfully
+there was none so I didn't have to rebase. ^^
+
+We can close the GitHub issue now.  (Not that it was
+negotiable in the first place anyways! ^^)
