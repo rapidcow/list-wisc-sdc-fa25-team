@@ -1,0 +1,82 @@
+X-Spam-Checker-Version: SpamAssassin 4.0.0 (2022-12-13) on rapidcow.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-3.6 required=5.0 tests=ARC_SIGNED,ARC_VALID,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DMARC_PASS,RCVD_IN_MSPIKE_H2,
+	RCVD_IN_VALIDITY_CERTIFIED,RCVD_IN_VALIDITY_RPBL,RCVD_IN_VALIDITY_SAFE,
+	RCVD_IN_ZEN_BLOCKED_OPENDNS,RDNS_NONE,SPF_HELO_PASS,URIBL_BLOCKED,
+	URIBL_DBL_BLOCKED_OPENDNS autolearn=ham autolearn_force=no
+	version=4.0.0
+ARC-Seal: i=1; a=rsa-sha256; t=1763692304; cv=none; d=forwardemail.net;
+ s=default;
+ b=JclEUOfbQJ0bPU9TnUFN19HU02u25w+alPXfzNnW94YZS85ZAyxLe0efrvTNNex81VZ62q2H7
+ aTO7ge/PeEgF7aA2Q+U2Z0Q/1btJUq5IHuz+fqYbPNeLZc1jhHP2Gft5oWp2ViftNq+k78IS2pg
+ xB2wZhZ/vxOxJOWU1A521QA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=forwardemail.net; h=In-Reply-To: References: To: From: Subject:
+ Message-Id: Date: Content-Type: Content-Transfer-Encoding: Mime-Version;
+ q=dns/txt; s=default; t=1763692304;
+ bh=GC6S2ckxkf5oddkXIaaScZfWOxHRvNftcuphiiuA//4=;
+ b=JXMgzLzzWbDnMRc6NzIjwOikhm4XxY20OvXeqiqexqJNS2eCgOSoOIJM+M6JA2QLpC/GeK5qg
+ IiHpT/57UGGbKgrYPumPWXm8L/MgGY63c8QIj2EW/FRiX22iBc0wKymROiYvgcMBX96A2+9X5bM
+ SLmauieXQVDuc2Egrt30xlo=
+ARC-Authentication-Results: i=1; mx1.forwardemail.net;
+ dkim=pass header.i=@rapidcow.org header.s=fe-abe68d2c00 header.a=rsa-sha256 header.b=hwiNALbh;
+ spf=pass (mx1.forwardemail.net: domain of SRS0=3117=55=rapidcow.org=ethan@fe-bounces.rapidcow.org designates 121.127.44.73 as permitted sender)
+ smtp.mailfrom="SRS0=3117=55=rapidcow.org=ethan@fe-bounces.rapidcow.org" smtp.helo=smtp.forwardemail.net;
+ dmarc=pass (p=REJECT arc=none) header.from=rapidcow.org header.d=rapidcow.org;
+ bimi=none
+Received: from smtp.forwardemail.net ([121.127.44.73]
+ smtp.forwardemail.net) by mx1.forwardemail.net (Forward Email) with ESMTPS
+ for <wisc-sdc-fa25-team@list.rapidcow.org> (version=TLSv1.3
+ cipher=TLS_AES_256_GCM_SHA384); Fri, 21 Nov 2025 02:31:42 +0000
+X-Forward-Email-Sender: rfc822; ethan@rapidcow.org, smtp.forwardemail.net,
+ 121.127.44.73
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rapidcow.org;
+ h=In-Reply-To: References: To: From: Subject: Message-Id: Date:
+ Content-Type: Content-Transfer-Encoding: Mime-Version; q=dns/txt;
+ s=fe-abe68d2c00; t=1763692302;
+ bh=GC6S2ckxkf5oddkXIaaScZfWOxHRvNftcuphiiuA//4=;
+ b=hwiNALbhPTpIpbgyA1HXt5iegHxln6+f+YIEqtI2Rd4bc+HDKcf5bCCmWpRagS/ASqAYLqTHP
+ jcm78YkGXYblEGj2IWmtbmeDWJ3YQIrtT1q75MbgZYFZu0AFO0oGrdiXsoGWw/1ra3qsDK75sPS
+ bhN0WZPuGViRPXNSm6zoHh9aP66KNpUubvG/8h5ZRKaKhmYOZLRV2+q4y/8L9VDD8xVj0N3a6BJ
+ JiPRkpranVWNgGpAGjIxcCUX6+8H6ejhgZ5GLro+Gy2Sc2AjYXUZGj9+JQ14WnEyy+7wEThIckL
+ M+c3/IGoY420Jp9CQ1WTtgmto1eWiDa3u8DF7EjNjxvA==
+X-Forward-Email-ID: 691fcf09335a18a27eefc5c2
+X-Forward-Email-Version: 1.4.6
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 20 Nov 2025 20:31:35 -0600
+Message-Id: <DEE0QNDMHNQJ.2VQOQE0R8XP45@rapidcow.org>
+Subject: Re: [GIT PULL #1 v2] PROJECT DECISION! Club Radar and boiletplate
+ friends
+From: "Ethan Meng" <ethan@rapidcow.org>
+To: <wisc-sdc-fa25-team@list.rapidcow.org>
+X-Mailer: aerc 0.21.0-0-g5549850facc2
+References: <1762451972.pull.1.v1+a3dfcac@x.rapidcow.org>
+ <1762542597.pull.1.v2+cafa8f4@x.rapidcow.org>
+In-Reply-To: <1762542597.pull.1.v2+cafa8f4@x.rapidcow.org>
+List-Id: <wisc-sdc-fa25-team.list.rapidcow.org>
+
+On Fri, 07 Nov 2025 at 02:25=E2=80=AFPM -0600, me wrote:
+
+> I will move README.md out after .github/README.md... but only after
+> this gets merged since the diff --cc output would be too confusing.
+
+I just realized this had completely slipped my mind, whoops!
+
+Well... at least it checks out that nobody reads this list.
+I never *planned* to move that MD file out of .github/ from
+the heart anyways as I despite vendor-specific file formats
+(that is GFM ;P)
+
+(And yes, I have no real intention to move the README file
+out of .github/ for that reason -- it only looks nice in a
+web browser because Markdown is made to look nice on a Git
+web interface or a fancy IDE, and neither of those I use.)
+
+~ethan
